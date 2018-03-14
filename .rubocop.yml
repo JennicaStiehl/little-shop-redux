@@ -1,5 +1,8 @@
 AllCops:
   Exclude:
     - 'spec/**/*'
+    - 'config.ru'
+    - 'db/schema.rb'
+    - 'db/migrate/**/*'
 Style/FrozenStringLiteralComment:
   Enabled: false
