@@ -25,7 +25,6 @@ RSpec.describe LittleShopApp do
       it 'should navigate to items index' do
         visit '/items'
 
-        # expect(page).to have_content 'Items'
         expect(page).to have_content 'Test Item'
       end
     end
