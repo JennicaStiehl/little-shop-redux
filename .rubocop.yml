@@ -1,3 +1,5 @@
 AllCops:
   Exclude:
     - 'spec/**/*'
+Style/FrozenStringLiteralComment:
+  Enabled: false
