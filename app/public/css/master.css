@@ -2,7 +2,11 @@ nav {
   display: flex;
   justify-content: flex-end;
   flex-direction: row;
-  align-items: baseline;
+  align-items: center;
+}
+
+ul {
+  width: 1300px;
 }
 
 nav .title, nav a {
@@ -30,20 +34,31 @@ nav .title {
   align-items: baseline;
 }
 
-.edit-button, .delete-button {
+.edit-button{
   border: none;
+  background-color: #ffef77;
   color: black;
-  padding: 10px;
+  padding: 10px 15px 10px 15px;
+  margin: 5px;
   text-align: center;
   text-decoration: none;
-  display: inline-flex;
-  font-size: 12px;
+  font-size: 14;
 }
 
-.delete-button {
-  background-color: red;
+input[type=button], input[type=submit], input[type=reset] {
+    background-color: #ba4227;
+    border: none;
+    color: black;
+    padding: 10px;
+    text-decoration: none;
+    margin: 5px;
+    cursor: pointer;
+    font-size: 14;
 }
 
-.edit-button {
-  background-color: yellow;
+.index-item {
+  flex-grow: 6;
+  padding: 8px;
+  font-size: 16;
+  border: solid 3px black;
 }

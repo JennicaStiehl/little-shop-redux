@@ -2,7 +2,7 @@
 <ul>
   <% @items.find_each do |item| %>
     <li class='index-list'>
-      <a href='/items/<%= item.id %>'><%= item.title %></a>
+      <a href='/items/<%= item.id %>' class="index-item"><%= item.title %></a>
       <a href='/item/<%= item.id %>/edit' class='edit-button'>Edit</a>
       <form action='/item/<%= item.id %>' method='POST' class='delete-button'>
         <input type='hidden' name='_method' value='DELETE'>
