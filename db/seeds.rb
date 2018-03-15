@@ -1,10 +1,15 @@
 require 'csv'
-require './app/models/item.rb'
+require './app/models/item'
 require './app/models/merchant'
+require './app/modelraks/invoice'
 
-options = { headers: true, header_converters: :symbol }
-CSV.foreach('./data/items.csv', options) do |row|
-  attributes = row.to_h
+def parse_csv(filename)
+  CSV.foreach(filename, headers: true, header_converters: :symbol) do |row|
+    yield row.to_h
+  end
+end
+
+parse_csv('./data/items.csv') do |attributes|
   attributes[:id] = attributes[:id].to_i
   attributes[:merchant_id] = attributes[:merchant_id].to_i
   attributes[:title] = attributes.delete(:name)
@@ -13,8 +18,10 @@ CSV.foreach('./data/items.csv', options) do |row|
   Item.create(attributes)
 end
 
-CSV.foreach('./data/merchants.csv', options) do |data|
-  hash = data.to_h
-  hash[:id] = hash[:id].to_i
-  Merchant.create(hash)
+parse_csv('./data/merchants.csv') do |data|
+  Merchant.create(data)
+end
+
+parse_csv('./data/invoices.csv') do |data|
+  Invoice.create(data)
 end
