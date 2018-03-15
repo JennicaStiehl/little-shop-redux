@@ -1,0 +1,91 @@
+nav {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
+  align-items: center;
+}
+
+ul {
+  width: 1300px;
+}
+
+input[type=submit] {
+    background-color: #ba4227;
+    border: none;
+    color: black;
+    padding: 10px;
+    text-decoration: none;
+    margin: 5px;
+    cursor: pointer;
+    font-size: 14;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #dddddd;
+  height: 150px;
+}
+
+.dashboard {
+  position: absolute;
+}
+
+.banner-title {
+  color: black;
+  font-size: 36;
+}
+
+.index-list {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: baseline;
+}
+
+.create-button{
+  border: solid 1px black;
+  background-color: #dddddd;
+  color: black;
+  padding: 10px 15px 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 14;
+}
+
+.edit-button{
+  border: none;
+  background-color: #ffef77;
+  color: black;
+  padding: 10px 15px 10px 15px;
+  margin: 5px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 14;
+}
+
+.index-item {
+  flex-grow: 6;
+  padding: 8px;
+  font-size: 16;
+  border: solid 3px black;
+}
+
+nav .title, nav a {
+  color: #696969;
+  font: helvetica;
+}
+
+nav a {
+  text-align: center;
+  padding: 10px;
+  font-size: 24;
+  text-decoration: none;
+}
+
+nav .title {
+  text-align: left;
+  font-size: 24;
+  flex-grow: 8;
+}
