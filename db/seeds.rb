@@ -11,8 +11,6 @@ def parse_csv(filename)
 end
 
 parse_csv('./data/items.csv') do |attributes|
-  attributes[:id] = attributes[:id].to_i
-  attributes[:merchant_id] = attributes[:merchant_id].to_i
   attributes[:title] = attributes.delete(:name)
   attributes[:price] = attributes.delete(:unit_price)
   attributes[:image] = 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/WelshCorgi.jpeg/220px-WelshCorgi.jpeg'
