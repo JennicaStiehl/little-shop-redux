@@ -1,14 +1,13 @@
 <h1>Items</h1>
 <ul>
-  <% @items.each do |item| %>
-    <li><a href='/items/<%= item.id %>'><%= item.title %></li></a>
-    <li><%= item.description %></li>
-    <li><%= item.price %></li>
-    <li><%= item.image %></li>
-    <a href='/item/<%= item.id %>/edit'>Edit</a>
-    <form action='/item/<%= item.id %>' method='POST'>
-      <input type='hidden' name='_method' value='DELETE'>
-      <input type='submit' value='delete'/>
-    </form>
+  <% @items.find_each do |item| %>
+    <li class='index-list'>
+      <a href='/items/<%= item.id %>'><%= item.title %></a>
+      <a href='/item/<%= item.id %>/edit' class='edit-button'>Edit</a>
+      <form action='/item/<%= item.id %>' method='POST' class='delete-button'>
+        <input type='hidden' name='_method' value='DELETE'>
+        <input type='submit' value='Delete'/>
+      </form>
+    </li>
   <% end %>
 </ul>

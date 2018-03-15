@@ -1,5 +1,7 @@
 # Defines LittleShop
 class LittleShopApp < Sinatra::Base
+  set :public_folder, 'public'
+
   get '/merchants' do
     @merchants = Merchant.all
     erb :"merchants/index"
@@ -7,7 +9,7 @@ class LittleShopApp < Sinatra::Base
 
   get '/items' do
     @items = Item.all_items
-    erb :'items/index'
+    erb :'items/index', layout: :index_layout
   end
 
   get '/items/:id' do

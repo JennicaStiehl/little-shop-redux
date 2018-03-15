@@ -1,0 +1,49 @@
+nav {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
+  align-items: baseline;
+}
+
+nav .title, nav a {
+  color: #696969;
+  font: helvetica;
+}
+
+nav a {
+  text-align: center;
+  padding: 10px;
+  font-size: 24;
+  text-decoration: none;
+}
+
+nav .title {
+  text-align: left;
+  font-size: 24;
+  flex-grow: 8;
+}
+
+.index-list {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: baseline;
+}
+
+.edit-button, .delete-button {
+  border: none;
+  color: black;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-flex;
+  font-size: 12px;
+}
+
+.delete-button {
+  background-color: red;
+}
+
+.edit-button {
+  background-color: yellow;
+}
