@@ -14,20 +14,22 @@ nav {
 nav a:hover {
   text-decoration: underline;
 }
-
-ul {
-  width: 1300px;
+nav .title, nav a {
+  color: #696969;
+  font: helvetica;
 }
 
-input[type=submit] {
-    background-color: #ba4227;
-    border: none;
-    color: black;
-    padding: 10px;
-    text-decoration: none;
-    margin: 5px;
-    cursor: pointer;
-    font-size: 14;
+nav a {
+  text-align: center;
+  padding: 10px;
+  font-size: 24;
+  text-decoration: none;
+}
+
+nav .title {
+  text-align: left;
+  font-size: 24;
+  flex-grow: 8;
 }
 
 header {
@@ -36,6 +38,72 @@ header {
   align-items: center;
   background-color: #dddddd;
   height: 150px;
+  position:relative;
+}
+
+header .title-container {
+  position: absolute;
+  left:50%;
+  transform: translateX(-50%);
+
+  height: 100%;
+}
+
+header .title-container .box {
+  position: relative;
+  top:50%;
+  transform: translateY(-50%);
+}
+
+header .title-container .box .title {
+  position: relative;
+  margin-bottom: 0.5em;
+  text-align: center;
+
+  font-size: 2em;
+}
+
+header .title-container .box .button {
+  color: #666;
+  background: #CCC;
+}
+
+header .linkBack {
+  position: absolute;
+  top: 0.5em;
+  left: 0.5em;
+}
+
+.button {
+  border: 1px solid #AAA;
+  border-radius: 2px;
+  padding:0.5em;
+  margin:0;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.button.edit {
+  background-color: #ffef77;
+  color: black;
+  padding: 10px;
+  margin: 5px;
+  font-size: 14;
+}
+
+.button.delete {
+  background-color: #ba4227;
+  padding: 10px;
+  margin: 5px;
+  font-size: 14;
+}
+
+
+.container {
+  width: 90%;
+  position: relative;
+  left:50%;
+  transform:translateX(-50%);
 }
 
 .dashboard {
@@ -64,38 +132,9 @@ header {
   font-size: 14;
 }
 
-.edit-button{
-  border: none;
-  background-color: #ffef77;
-  color: black;
-  padding: 10px 15px 10px 15px;
-  margin: 5px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 14;
-}
-
 .index-item {
   flex-grow: 6;
   padding: 8px;
   font-size: 16;
   border: solid 3px black;
-}
-
-nav .title, nav a {
-  color: #696969;
-  font: helvetica;
-}
-
-nav a {
-  text-align: center;
-  padding: 10px;
-  font-size: 24;
-  text-decoration: none;
-}
-
-nav .title {
-  text-align: left;
-  font-size: 24;
-  flex-grow: 8;
 }
