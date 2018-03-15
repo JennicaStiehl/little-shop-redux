@@ -1,4 +1,7 @@
-<h1>Items</h1>
+<%= erb :'partials/header', locals: { title: 'Items',
+                           dashboard: '/items-dashboard',
+                           create: { object: 'Item', path: '/items/new' } } %>
+
 <ul>
   <% @items.find_each do |item| %>
     <li class='index-list'>
