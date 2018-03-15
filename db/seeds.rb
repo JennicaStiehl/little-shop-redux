@@ -1,7 +1,7 @@
 require 'csv'
 require './app/models/item'
 require './app/models/merchant'
-require './app/modelraks/invoice'
+require './app/models/invoice'
 
 def parse_csv(filename)
   CSV.foreach(filename, headers: true, header_converters: :symbol) do |row|
