@@ -1,0 +1,19 @@
+ul.collection {
+
+}
+
+ul.collection li.collection-item {
+  border: solid 3px black;
+}
+
+ul.collection li.collection-item * {
+  display: inline-block;
+}
+
+ul.collection li.collection-item .secondary-content {
+  right: 0;
+}
+
+ul.collection li.collection-item:nth-child(even) {
+  background: #CCC;
+}
