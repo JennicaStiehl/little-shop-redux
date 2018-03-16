@@ -10,12 +10,12 @@ class LittleShopApp < Sinatra::Base
     erb :'items/index', locals: { items: Item.all }
   end
 
-  get '/items/:id' do
-    erb :'items/show', locals: { item: Item.find(params[:id]) }
+  get '/items/new' do
+    erb :'items/new'
   end
 
-  get '/items/new' do
-    erb :'items/new.erb'
+  get '/items/:id' do
+    erb :'items/show', locals: { item: Item.find(params[:id]) }
   end
 
   get '/items/:id/edit' do
