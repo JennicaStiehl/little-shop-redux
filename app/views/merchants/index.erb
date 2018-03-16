@@ -11,7 +11,7 @@
 %>
 <div class="container">
   <ul class="merchants">
-    <% @merchants.find_each do |merchant| %>
+    <% merchants.find_each do |merchant| %>
       <li class="merchant">
         <a href="/merchant/<%= merchant.id %>"><%= merchant.name %></a>
 
