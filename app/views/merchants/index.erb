@@ -10,14 +10,15 @@
       }
 %>
 <div class="container">
-  <ul>
-    <% merchants.find_each do |merchant| %>
-      <li class='index-list'>
-        <a href='/merchant/<%= merchant.id %>' class="index-item"><%= merchant.name %></a>
-        <a href='/merchant/<%= merchant.id %>/edit' class='edit button'>Edit</a>
-        <form action='/merchant/<%= merchant.id %>' method='POST'>
-          <input type='hidden' name='_method' value='DELETE'>
-          <input type='submit' value='Delete' class='delete button'/>
+  <ul class="merchants">
+    <% @merchants.find_each do |merchant| %>
+      <li class="merchant">
+        <a href="/merchant/<%= merchant.id %>"><%= merchant.name %></a>
+
+        <form action="/merchant/<%= merchant.id %>" method="POST">
+          <input type="hidden" name="_method" value="DELETE">
+          <a href="/merchant/<%= merchant.id %>/edit" class='edit button'>Edit</a>
+          <input type="submit" value="Delete" class="delete button"/>
         </form>
       </li>
     <% end %>

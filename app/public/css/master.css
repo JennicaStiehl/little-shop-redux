@@ -114,27 +114,3 @@ header .linkBack {
   color: black;
   font-size: 36;
 }
-
-.index-list {
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  align-items: baseline;
-}
-
-.create-button{
-  border: solid 1px black;
-  background-color: #dddddd;
-  color: black;
-  padding: 10px 15px 10px 15px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 14;
-}
-
-.index-item {
-  flex-grow: 6;
-  padding: 8px;
-  font-size: 16;
-  border: solid 3px black;
-}
