@@ -1,4 +1,4 @@
-RSpec.describe './app/views/items/index.erb', type: :feature do
+ RSpec.describe './app/views/items/index.erb', type: :feature do
 
   before(:each) do
     DatabaseCleaner.clean
@@ -17,7 +17,9 @@ RSpec.describe './app/views/items/index.erb', type: :feature do
     describe 'An item\'s links' do
       it 'should navigate to item page when title is clicked' do
         visit '/items'
-        click_link 'Test Item'
+        within '.info' do
+          click_link 'Test Item'
+        end
 
         expect(current_path).to eq '/items/1'
         expect(page).to have_content 'Test Item'

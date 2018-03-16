@@ -1,16 +1,27 @@
-<%= erb :'partials/header', locals: { title: 'Items',
-                           dashboard: '/items-dashboard',
-                           create: { object: 'Item', path: '/items/new' } } %>
+<%=
+  erb :'partials/header',
+      locals: {
+        title: 'Items',
+        dashboard: '/items-dashboard',
+        create: {
+          object: 'Item',
+          path: '/item/new'
+        }
+      }
+%>
 
-<ul>
-  <% @items.find_each do |item| %>
-    <li class='index-list'>
-      <a href='/items/<%= item.id %>' class="index-item"><%= item.title %></a>
-      <a href='/item/<%= item.id %>/edit' class='edit-button'>Edit</a>
-      <form action='/item/<%= item.id %>' method='POST' class='delete-button'>
-        <input type='hidden' name='_method' value='DELETE'>
-        <input type='submit' value='Delete'/>
-      </form>
-    </li>
-  <% end %>
-</ul>
+<div class="container">
+  <ul class="items">
+    <% items.find_each do |item| %>
+      <li class="card">
+        <a href="/items/<%= item.id %>">
+          <img src="<%= item.image %>" alt="<%= item.title %>" title="<%= item.title %>" />
+        </a>
+        <div class="info">
+          <a href="/items/<%= item.id %>"><%= item.title %></a>
+          <p>$<%= item.price %></p>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>
