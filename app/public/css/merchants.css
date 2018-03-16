@@ -1,0 +1,20 @@
+ul.merchants {
+
+
+}
+
+ul.merchants .merchant {
+  border: solid 3px black;
+}
+
+ul.merchants .merchant * {
+  display: inline-block;
+}
+
+ul.merchants .merchant form {
+  right: 0;
+}
+
+ul.merchants .merchant:nth-child(even) {
+  background: #CCC;
+}
