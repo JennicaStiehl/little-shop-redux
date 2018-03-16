@@ -7,13 +7,11 @@ class LittleShopApp < Sinatra::Base
   end
 
   get '/items' do
-    @items = Item.all
-    erb :'items/index', layout: :index_layout
+    erb :'items/index', locals: { items: Item.all }
   end
 
   get '/items/:id' do
-    @item = Item.find(params[:id])
-    erb :'items/show'
+    erb :'items/show', locals: { item: Item.find(params[:id]) }
   end
 
   get '/items/new' do

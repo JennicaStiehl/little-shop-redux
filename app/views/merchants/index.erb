@@ -11,7 +11,7 @@
 %>
 <div class="container">
   <ul>
-    <% @merchants.find_each do |merchant| %>
+    <% merchants.find_each do |merchant| %>
       <li class='index-list'>
         <a href='/merchant/<%= merchant.id %>' class="index-item"><%= merchant.name %></a>
         <a href='/merchant/<%= merchant.id %>/edit' class='edit button'>Edit</a>

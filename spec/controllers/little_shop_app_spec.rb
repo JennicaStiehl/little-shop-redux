@@ -14,38 +14,34 @@ RSpec.describe LittleShopApp do
     end
 
     describe 'GET /merchants' do
-      get '/merchants'
 
       it 'should respond with a success code' do
-        expect(last_response.status).to  eq 200
-      end
-
-      it 'should get all merchants' do
-        expect(last_response.body).to include ''
+        visit '/merchants'
+        expect(page.status_code).to  eq 200
       end
     end
 
     describe 'GET /items' do
-      get '/items'
 
       it 'should respond with success code' do
-        expect(last_response.status).to eq 200
+        visit '/items'
+        expect(page.status_code).to eq 200
       end
     end
 
     describe 'GET /item/:id' do
-      get '/items/1'
 
       it 'should respond with success code' do
-        expect(last_response.status).to eq 200
+        visit '/items/1'
+        expect(page.status_code).to eq 200
       end
     end
 
     describe 'GET /item/new' do
-      get '/items/new'
 
       it 'should respond with success code' do
-        expect(last_response.status).to eq 200
+        visit '/items/1/new'
+        expect(page.status_code).to eq 200
       end
     end
   end

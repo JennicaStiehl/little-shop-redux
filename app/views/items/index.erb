@@ -12,13 +12,13 @@
 
 <div class="container">
   <ul class="items">
-    <% @items.find_each do |item| %>
+    <% items.find_each do |item| %>
       <li class="card">
-        <a href="/item/<%= item.id %>">
+        <a href="/items/<%= item.id %>">
           <img src="<%= item.image %>" alt="<%= item.title %>" title="<%= item.title %>" />
         </a>
         <div class="info">
-          <a href="/item/<%= item.id %>"><%= item.title %></a>
+          <a href="/items/<%= item.id %>"><%= item.title %></a>
           <p>$<%= item.price %></p>
         </div>
       </li>
