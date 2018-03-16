@@ -5,7 +5,7 @@
         dashboard: '/merchants-dashboard',
         create: {
           object: 'Merchant',
-          path: '/merchant/new'
+          path: '/merchants/new'
         }
       }
 %>
@@ -13,11 +13,11 @@
   <ul class="merchants">
     <% merchants.find_each do |merchant| %>
       <li class="merchant">
-        <a href="/merchant/<%= merchant.id %>"><%= merchant.name %></a>
+        <a href="/merchants/<%= merchant.id %>"><%= merchant.name %></a>
 
-        <form action="/merchant/<%= merchant.id %>" method="POST">
+        <form action="/merchants/<%= merchant.id %>" method="POST">
           <input type="hidden" name="_method" value="DELETE">
-          <a href="/merchant/<%= merchant.id %>/edit" class='edit button'>Edit</a>
+          <a href="/merchants/<%= merchant.id %>/edit" class='edit button'>Edit</a>
           <input type="submit" value="Delete" class="delete button"/>
         </form>
       </li>
