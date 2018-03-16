@@ -1,0 +1,15 @@
+<header>
+  <% unless dashboard.nil? %>
+    <a href="<%= dashboard %>" class="linkBack">Dashboard</a>
+  <% end %>
+  <div class="title-container">
+    <div class="box">
+      <h1 class="title"><%= title %></h1>
+      <% unless create.nil? %>
+        <a href='<%= create[:path] %>' class='button'>
+          Create A New <%= create[:object] %>
+        </a>
+      <% end %>
+    </div>
+  </div>
+</header>
