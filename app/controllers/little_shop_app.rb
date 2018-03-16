@@ -3,8 +3,7 @@ class LittleShopApp < Sinatra::Base
   set :public_folder, 'public'
 
   get '/merchants' do
-    @merchants = Merchant.all
-    erb :"merchants/index"
+    erb :"merchants/index", locals: { merchants: Merchant.all }
   end
 
   get '/items' do
@@ -15,5 +14,13 @@ class LittleShopApp < Sinatra::Base
   get '/items/:id' do
     @item = Item.find(params[:id])
     erb :'items/show'
+  end
+
+  get '/items/new' do
+    erb :'items/new.erb'
+  end
+
+  get '/items/:id/edit' do
+    erb :'items/edit', locals: { item: Item.find(params[:id]) }
   end
 end

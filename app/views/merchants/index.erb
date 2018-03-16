@@ -1,6 +1,25 @@
-<h1>Merchants</h1>
-<ul>
-  <% @merchants.each do |merchant| %>
-    <li><%= merchant.name %></li>
-  <% end %>
-</ul>
+<%=
+  erb :'partials/header',
+      locals: {
+        title: 'Merchants',
+        dashboard: '/merchants-dashboard',
+        create: {
+          object: 'Merchant',
+          path: '/merchant/new'
+        }
+      }
+%>
+<div class="container">
+  <ul>
+    <% @merchants.find_each do |merchant| %>
+      <li class='index-list'>
+        <a href='/merchant/<%= merchant.id %>' class="index-item"><%= merchant.name %></a>
+        <a href='/merchant/<%= merchant.id %>/edit' class='edit button'>Edit</a>
+        <form action='/merchant/<%= merchant.id %>' method='POST'>
+          <input type='hidden' name='_method' value='DELETE'>
+          <input type='submit' value='Delete' class='delete button'/>
+        </form>
+      </li>
+    <% end %>
+  </ul>
+</div>

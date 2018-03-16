@@ -13,19 +13,39 @@ RSpec.describe LittleShopApp do
       DatabaseCleaner.clean
     end
 
-    describe '/merchants path' do
-      it 'should navigate to merchants index' do
-        visit '/merchants'
+    describe 'GET /merchants' do
+      get '/merchants'
 
-        expect(page).to have_content 'Test Merchant'
+      it 'should respond with a success code' do
+        expect(last_response.status).to  eq 200
+      end
+
+      it 'should get all merchants' do
+        expect(last_response.body).to include ''
       end
     end
 
-    describe '/items path' do
-      it 'should navigate to items index' do
-        visit '/items'
+    describe 'GET /items' do
+      get '/items'
 
-        expect(page).to have_content 'Test Item'
+      it 'should respond with success code' do
+        expect(last_response.status).to eq 200
+      end
+    end
+
+    describe 'GET /item/:id' do
+      get '/items/1'
+
+      it 'should respond with success code' do
+        expect(last_response.status).to eq 200
+      end
+    end
+
+    describe 'GET /item/new' do
+      get '/items/new'
+
+      it 'should respond with success code' do
+        expect(last_response.status).to eq 200
       end
     end
   end
