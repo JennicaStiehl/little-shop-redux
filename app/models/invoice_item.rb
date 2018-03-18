@@ -5,5 +5,5 @@ class InvoiceItem < ActiveRecord::Base
                         :quantity,
                         :unit_price
   belongs_to :invoice
-  has_many :items
+  belongs_to :item
 end
