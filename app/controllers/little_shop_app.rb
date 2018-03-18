@@ -21,4 +21,8 @@ class LittleShopApp < Sinatra::Base
   get '/items/:id/edit' do
     erb :'items/edit', locals: { item: Item.find(params[:id]) }
   end
+
+  get '/invoices' do
+    erb :'invoices/index', locals: { invoices: Invoice.all }
+  end
 end

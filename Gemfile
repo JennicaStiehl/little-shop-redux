@@ -14,5 +14,6 @@ group :development, :test do
   gem 'rspec'
   gem 'rspec-core'
   gem 'shotgun'
+  gem 'simplecov'
   gem 'tux'
 end

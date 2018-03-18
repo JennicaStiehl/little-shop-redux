@@ -18,10 +18,14 @@ RSpec.describe 'Invoice index' do
 
       visit '/invoices'
 
-      within 'body' do
+      within '.collection' do
         expect(page).to have_content '1'
         expect(page).to have_content '2'
       end
     end
+  end
+
+  describe 'links' do
+
   end
 end
