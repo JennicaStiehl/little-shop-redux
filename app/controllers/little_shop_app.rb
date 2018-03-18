@@ -33,7 +33,7 @@ class LittleShopApp < Sinatra::Base
   put '/items/:id' do
     Item.update(params[:item])
 
-    redirect '/item/:id'
+    redirect '/items/:id'
   end
 
   get '/items-dashboard' do
@@ -71,7 +71,7 @@ class LittleShopApp < Sinatra::Base
   put '/merchants/:id' do
     Merchant.update(params[:merchant])
 
-    redirect '/merchant/:id'
+    redirect '/merchants/:id'
   end
 
   get '/merchants-dashboard' do
@@ -109,7 +109,7 @@ class LittleShopApp < Sinatra::Base
   put '/invoices/:id' do
     Invoice.update(params[:invoice])
 
-    redirect '/item/:id'
+    redirect '/invoices/:id'
   end
 
   get '/invoices-dashboard' do
