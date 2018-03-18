@@ -13,34 +13,56 @@ RSpec.describe LittleShopApp do
       DatabaseCleaner.clean
     end
 
-    describe 'GET /merchants' do
-
+    describe 'merchant paths' do
       it 'should respond with a success code' do
         visit '/merchants'
         expect(page.status_code).to  eq 200
       end
+
+      it 'should have a success code for GET /merchants/:id' do
+        visit '/merchants/1'
+        expect(page.status_code).to eq 200
+      end
+
+      it 'should have a success code for GET /merchants/new' do
+        visit '/merchants/new'
+        expect(page.status_code).to eq 200
+      end
+
+      it 'should have a success code for GET /merchants/:id/edit' do
+        visit '/merchants/1/edit'
+        expect(page.status_code).to eq 200
+      end
+
+      it 'should have a success code for GET /merchants/:id/edit' do
+        visit '/merchants/1/edit'
+        expect(page.status_code).to eq 200
+      end
     end
 
-    describe 'GET /items' do
-
-      it 'should respond with success code' do
+    describe 'item paths' do
+      it 'should have a success code for GET /items' do
         visit '/items'
         expect(page.status_code).to eq 200
       end
-    end
 
-    describe 'GET /item/:id' do
-
-      it 'should respond with success code' do
+      it 'should have a success code for GET /items/:id' do
         visit '/items/1'
         expect(page.status_code).to eq 200
       end
-    end
 
-    describe 'GET /item/new' do
+      it 'should have a success code for GET /items/new' do
+        visit '/items/new'
+        expect(page.status_code).to eq 200
+      end
 
-      it 'should respond with success code' do
-        visit '/items/1/new'
+      it 'should have a success code for GET /items/:id/edit' do
+        visit '/items/1/edit'
+        expect(page.status_code).to eq 200
+      end
+
+      it 'should have a success code for GET /items/:id/edit' do
+        visit '/items/1/edit'
         expect(page.status_code).to eq 200
       end
     end

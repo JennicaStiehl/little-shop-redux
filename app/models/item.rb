@@ -6,4 +6,5 @@ class Item < ActiveRecord::Base
                         :image
 
   belongs_to :merchant
+  has_many :invoice_items
 end
