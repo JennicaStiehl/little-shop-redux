@@ -133,6 +133,10 @@ header .linkback a:hover {
   transition: color 0.25s;
 }
 
+.button.icon.delete {
+  padding-left: 10px;
+}
+
 .button.icon.delete:hover {
   color: #FF0000;
 }
