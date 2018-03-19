@@ -13,7 +13,7 @@
   <ul class="collection">
     <% invoices.find_each do |invoice| %>
       <li class="collection-item">
-        <a href="/invoices/<%= invoice.id %>"><%= invoice.id %></a>
+        <a href="/invoices/<%= invoice.id %>" class="primary-content"><%= invoice.id %></a>
 
         <div class="secondary-content">
           <form action="/invoices/<%= invoice.id %>" method="POST">

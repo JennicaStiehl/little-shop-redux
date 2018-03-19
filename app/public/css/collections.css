@@ -4,14 +4,17 @@ ul.collection {
 
 ul.collection li.collection-item {
   border: solid 3px black;
+  display: flex;
+  align-items: center;
 }
 
-ul.collection li.collection-item * {
-  display: inline-block;
+ul.collection li.collection-item a:nth-child(1) {
+  flex-grow: 1;
+  padding-left: 20px;
 }
 
 ul.collection li.collection-item .secondary-content {
-  right: 0;
+  display: flex;
 }
 
 ul.collection li.collection-item:nth-child(even) {
