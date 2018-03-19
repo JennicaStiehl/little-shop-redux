@@ -1,6 +1,7 @@
 RSpec.describe 'Invoices index' do
   before(:each) do
     DatabaseCleaner.clean
+    Merchant.create(name: 'Test Merchant')
     Invoice.create(merchant_id: 1, status: 'pending')
     Invoice.create(merchant_id: 1, status: 'pending')
   end

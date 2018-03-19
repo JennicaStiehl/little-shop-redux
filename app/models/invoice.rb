@@ -4,4 +4,9 @@ class Invoice < ActiveRecord::Base
   validates :status, presence: true
 
   has_many :invoice_items
+  belongs_to :merchant
+
+  def self.merchants
+    Invoice.all.map(&:merchant).uniq
+  end
 end
