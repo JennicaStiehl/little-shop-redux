@@ -22,7 +22,7 @@ RSpec.describe 'Items index' do
     it 'should have a nav bar' do
       visit '/items/new'
 
-      expect(page).to have_selector :css, 'nav p.title'
+      expect(page).to have_selector :css, '.brand-logo'
     end
 
     it 'should have a header partial' do

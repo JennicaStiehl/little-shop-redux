@@ -14,7 +14,7 @@ RSpec.describe 'Invoices index' do
     it 'should have a nav bar' do
       visit '/invoices'
 
-      expect(page).to have_selector :css, 'nav p.title'
+      expect(page).to have_selector :css, '.brand-logo'
     end
 
     it 'should have a header partial' do
