@@ -113,7 +113,7 @@ header .linkback a:hover {
   text-decoration: underline;
 }
 
-.button {
+.button:not(.icon) {
   border: 1px solid #AAA;
   border-radius: 5px;
   padding:0.5em;
@@ -122,21 +122,24 @@ header .linkback a:hover {
   cursor: pointer;
 }
 
-.button.edit {
-  background-color: #ffef77;
-  color: black;
-  padding: 10px;
-  margin: 5px;
-  font-size: 14;
+.button.icon {
+  font-size: 1.5em;
+
+  color: #333;
+  text-decoration: none;
+
+  cursor: pointer;
+
+  transition: color 0.25s;
 }
 
-.button.delete {
-  background-color: #ba4227;
-  padding: 10px;
-  margin: 5px;
-  font-size: 14;
+.button.icon.delete:hover {
+  color: #FF0000;
 }
 
+.button.icon.edit:hover {
+  color: #FFA900;
+}
 
 .container {
   width: 90%;
