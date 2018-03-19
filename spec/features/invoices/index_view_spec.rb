@@ -1,9 +1,20 @@
-RSpec.describe 'Invoice index' do
+RSpec.describe 'Invoices index' do
+  before(:each) do
+    DatabaseCleaner.clean
+    Merchant.create(name: 'Test Merchant')
+    Invoice.create(merchant_id: 1, status: 'pending')
+    Invoice.create(merchant_id: 1, status: 'pending')
+  end
+
+  after(:each) do
+    DatabaseCleaner.clean
+  end
+
   describe 'content' do
     it 'should have a nav bar' do
       visit '/invoices'
 
-      expect(page).to have_selector :css, 'nav p.title'
+      expect(page).to have_selector :css, '.brand-logo'
     end
 
     it 'should have a header partial' do
@@ -13,9 +24,6 @@ RSpec.describe 'Invoice index' do
     end
 
     it 'should have invoices' do
-      Invoice.create(merchant_id: 1, status: 'pending')
-      Invoice.create(merchant_id: 1, status: 'pending')
-
       visit '/invoices'
 
       within '.collection' do
@@ -26,6 +34,71 @@ RSpec.describe 'Invoice index' do
   end
 
   describe 'links' do
+    describe 'dashboard link' do
+      it 'should link to /invoices-dashboard' do
+        visit '/invoices'
 
+        within 'header' do
+          click_on 'Dashboard'
+        end
+
+        expect(current_path).to eq '/invoices-dashboard'
+      end
+    end
+
+    describe 'create new link' do
+      it 'should link to /invoices/new' do
+        visit '/invoices'
+
+        within 'header' do
+          click_on 'Create A New Invoice'
+        end
+
+        expect(current_path).to eq '/invoices/new'
+      end
+    end
+
+    describe 'individual invoice link' do
+      it 'should link to /invoices/:id' do
+        visit '/invoices'
+
+        within '.collection' do
+          click_on '1'
+        end
+
+        expect(current_path).to eq '/invoices/1'
+
+        visit '/invoices'
+
+        within '.collection' do
+          click_on '2'
+        end
+
+        expect(current_path).to eq '/invoices/2'
+      end
+    end
+
+    describe 'edit invoice link' do
+      it 'should link to /invoices/:id/edit' do
+        visit '/invoices'
+
+        first('.collection-item').click_on 'Edit'
+
+        expect(current_path).to eq '/invoices/1/edit'
+      end
+    end
+
+    describe 'delete invoice link' do
+      it 'should delete an invoice from list' do
+        visit '/invoices'
+        expect(page).to have_selector('.collection-item', count: 2)
+
+        first('.collection-item').click_on 'Delete'
+        expect(page).to have_selector('.collection-item', count: 1)
+
+        first('.collection-item').click_on 'Delete'
+        expect(page).to have_selector('.collection-item', count: 0)
+      end
+    end
   end
 end
