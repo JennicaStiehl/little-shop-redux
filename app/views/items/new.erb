@@ -1,14 +1,24 @@
 <%=
   erb :'partials/header',
       locals: {
-        title: 'Create New Item',
+        title: 'Create New Invoice',
         dashboard: nil,
         create: nil
       }
 %>
 
 <div class="container col-6" style="background:#FF0000;">
-  <form action="/items/new" method="POST">
-
+  <form action="/items" method="POST">
+    <select name="item[merchant_id]" value="Merchant">
+      <% merchants.each do |merchant| %>
+        <option value="<%= merchant.id %>"> <%= merchant.name %> </option>
+      <% end %>
+    </select>
+    <input type="text" name="item[title]" value="Title">
+    <textarea name="item[description]">Description</textarea>
+    <input type="number" name="item[price]" value="Price">
+    <input type="url" name="item[image]" value="Image URL">
+    <a href="/items" class="button cancel">Cancel</a>
+    <button type="submit" class="button create">Create Item</button>
   </form>
 </div>

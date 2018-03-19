@@ -11,7 +11,7 @@
   <form action="/invoices" method="POST">
     <select name="invoice[merchant_id]" value="Merchant ID">
       <% merchants.each do |merchant| %>
-        <option value="<%= merchant.id %>"> <%= merchant.id %> </option>
+        <option value="<%= merchant.id %>"> <%= merchant.name %> </option>
       <% end %>
     </select>
     <input type="text" name="invoice[status]" value="Status">

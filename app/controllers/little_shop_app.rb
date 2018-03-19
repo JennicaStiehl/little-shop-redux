@@ -7,7 +7,7 @@ class LittleShopApp < Sinatra::Base
   end
 
   get '/items/new' do
-    erb :'items/new'
+    erb :'items/new', locals: { merchants: Merchant.all }
   end
 
   post '/items' do
