@@ -1,6 +1,11 @@
 <header>
   <% unless dashboard.nil? %>
-    <a href="<%= dashboard %>" class="linkBack">Dashboard</a>
+  <div class="linkBack">
+    <a href="<%= dashboard %>" class="link">
+      <i class="far fa-chevron-left"></i>
+      Dashboard
+    </a>
+  </div>
   <% end %>
   <div class="title-container">
     <div class="box">

@@ -103,6 +103,15 @@ header .linkBack {
   left: 0.5em;
 }
 
+header .linkBack a{
+  color: #e6e5e5;
+  text-decoration: none;
+}
+
+header .linkback a:hover {
+  text-decoration: underline;
+}
+
 .button {
   border: 1px solid #AAA;
   border-radius: 2px;

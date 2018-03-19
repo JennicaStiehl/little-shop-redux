@@ -31,7 +31,7 @@ RSpec.describe 'Items index' do
       expect(page).to have_selector :css, '.title-container'
     end
 
-    it 'should have invoices' do
+    it 'should have items' do
       visit '/items'
 
       within '.cards' do
