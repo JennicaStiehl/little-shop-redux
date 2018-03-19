@@ -15,6 +15,7 @@ ul.collection li.collection-item a:nth-child(1) {
 
 ul.collection li.collection-item .secondary-content {
   display: flex;
+  margin: 10px;
 }
 
 ul.collection li.collection-item:nth-child(even) {
