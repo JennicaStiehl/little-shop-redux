@@ -3,10 +3,12 @@ RSpec.describe 'Items index' do
     DatabaseCleaner.clean
     Merchant.create(name: 'Test Merchant')
     Item.create(merchant_id: 1,
+                title: 'Test',
                 description: 'description',
                 price: 1,
                 image: 'link')
     Item.create(merchant_id: 1,
+                title: 'Test 2',
                 description: 'description 2',
                 price: 1,
                 image: 'link')
@@ -33,7 +35,7 @@ RSpec.describe 'Items index' do
   describe 'functionality' do
     it 'should create a new item' do
       visit '/items'
-      expect(page).to have_selector('.card', count: 2)
+      expect(page).to have_selector('ul .card', count: 2)
 
       visit '/items/new'
       select 'Test Merchant', from: 'item[merchant_id]'
@@ -44,7 +46,7 @@ RSpec.describe 'Items index' do
       click_on 'Create Item'
 
       expect(current_path).to eq '/items'
-      expect(page).to have_selector('.card', count: 3)
+      expect(page).to have_selector('ul .card', count: 3)
     end
   end
 end
