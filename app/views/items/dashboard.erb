@@ -19,6 +19,30 @@
     </li>
     <li class="card">
       <h3>Item By Age</h3>
+      <ul>
+        <li id="newest">
+          <h4>Newest</h4>
+          <ul class="inline">
+            <li>
+              <p class="left">Item:</p>
+              <p class="right">
+                <a href="/items/<%= Item.newest.id %>"><%= Item.newest.title %></a>
+              </p>
+            </li>
+          </ul>
+        </li>
+        <li id="oldest">
+          <h4>Oldest</h4>
+          <ul class="inline">
+            <li>
+              <p class="left">Item:</p>
+              <p class="right">
+                <a href="/items/<%= Item.oldest.id %>"><%= Item.oldest.title %></a>
+              </p>
+            </li>
+          </ul>
+        </li>
+      </ul>
     </li>
   </ul>
 </div>

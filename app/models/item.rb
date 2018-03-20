@@ -31,4 +31,12 @@ class Item < ActiveRecord::Base
     split_string.reverse!
     split_string.map(&:reverse).join(',')
   end
+
+  def self.newest
+    Item.new
+  end
+
+  def self.oldest
+    Item.new
+  end
 end

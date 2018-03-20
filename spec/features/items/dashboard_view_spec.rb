@@ -13,7 +13,7 @@ RSpec.describe 'Items dashboard' do
                 image: 'link',
                 created_at:  Date.parse("2014-04-01"))
     Item.create(merchant_id: 2,
-                title: 'Test Item',
+                title: 'Test Item 3',
                 description: 'description',
                 price: 1800,
                 image: 'link',
@@ -52,9 +52,9 @@ RSpec.describe 'Items dashboard' do
       visit '/items-dashboard'
 
       within('.cards .card:last-child') do
-        within('li:first-child') do
-          exepect(page).to have_content('Newest')
-          expect(page).to have_content('')
+        within('li#newest') do
+          expect(page).to have_content('Newest')
+          expect(page).to have_content('Test Item')
 
           find('a').click
 
@@ -67,9 +67,9 @@ RSpec.describe 'Items dashboard' do
       visit '/items-dashboard'
 
       within('.cards .card:last-child') do
-        within('li:last-child') do
-          exepect(page).to have_content('Oldest')
-          expect(page).to have_content('')
+        within('li#oldest') do
+          expect(page).to have_content('Oldest')
+          expect(page).to have_content('Test Item 2')
 
           find('a').click
 
