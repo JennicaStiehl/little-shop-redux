@@ -49,6 +49,8 @@ class Invoice < ActiveRecord::Base
   end
 
   def self.quantity_high_low
+    
+
     {
       highest: Invoice.new,
       lowest: Invoice.new
