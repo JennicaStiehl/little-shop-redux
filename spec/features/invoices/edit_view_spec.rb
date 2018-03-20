@@ -88,8 +88,8 @@ RSpec.describe 'Invoices edit view' do
       click_on 'Update Invoice'
 
       expect(current_path).to eq '/invoices/1'
-
-      expect(page).to have_content('Invoice 1 - Returned')
+      
+      expect(page).to have_content('Invoice: 1 - Returned')
     end
 
     it 'should be able to cancel the edit' do
