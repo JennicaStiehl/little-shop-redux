@@ -1,4 +1,29 @@
 RSpec.describe 'Items dashboard' do
+  before(:all) do
+    DatabaseCleaner.clean
+    Item.create(merchant_id: 1,
+                title: 'Test Item',
+                description: 'description',
+                price: 1000,
+                image: 'link')
+    Item.create(merchant_id: 1,
+                title: 'Test Item 2',
+                description: 'description',
+                price: 1400,
+                image: 'link',
+                created_at:  Date.parse("2014-04-01"))
+    Item.create(merchant_id: 2,
+                title: 'Test Item',
+                description: 'description',
+                price: 1800,
+                image: 'link',
+                created_at:  Date.parse("2016-04-01"))
+  end
+
+  after(:each) do
+    DatabaseCleaner.clean
+  end
+
   describe 'content' do
     it 'should have cards' do
       visit '/item-dashboard'

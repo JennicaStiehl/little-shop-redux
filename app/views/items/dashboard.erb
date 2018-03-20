@@ -1,0 +1,24 @@
+<%=
+  erb :'partials/header',
+      locals: {
+        title: 'Items Dashboard',
+        dashboard: nil,
+        buttons: nil
+      }
+%>
+
+<div class="container">
+  <ul class="cards">
+    <li class="card">
+      <h3>Total Item Count</h3>
+      <h2 class="big-num"><%= Item.count %></h2>
+    </li>
+    <li class="card">
+      <h3>Avg Price Per Item</h3>
+      <h2 class="big-num"><%= Item.avg_price %></h2>
+    </li>
+    <li class="card">
+      <h3>Item By Age</h3>
+    </li>
+  </ul>
+</div>
