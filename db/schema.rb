@@ -25,11 +25,11 @@ ActiveRecord::Schema.define(version: 20180319163639) do
   end
 
   create_table "invoices", force: :cascade do |t|
-    t.integer "customer_id"
-    t.integer "merchant_id"
     t.text "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "customer_id"
+    t.integer "merchant_id"
   end
 
   create_table "items", force: :cascade do |t|
