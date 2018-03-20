@@ -20,20 +20,20 @@ RSpec.describe 'Items dashboard' do
                 created_at:  Date.parse("2016-04-01"))
   end
 
-  after(:each) do
+  after(:all) do
     DatabaseCleaner.clean
   end
 
   describe 'content' do
     it 'should have cards' do
-      visit '/item-dashboard'
+      visit '/items-dashboard'
 
       expect(page).to have_selector('.card')
       expect(all('.cards').length).to be(3)
     end
 
     it 'should have the total number of items' do
-      visit '/item-dashboard'
+      visit '/items-dashboard'
 
       within('.cards .card:first-child') do
         expect(page).to have_content(3)
@@ -41,14 +41,16 @@ RSpec.describe 'Items dashboard' do
     end
 
     it 'should have the average price' do
-      visit '/item-dashboard'
+      visit '/items-dashboard'
 
       within('.cards .card:nth-child(2)') do
-        expect(page).to have_content('$0.00')
+        expect(page).to have_content('$14.00')
       end
     end
 
     it 'should have newest item' do
+      visit '/items-dashboard'
+
       within('.cards .card:last-child') do
         within('li:first-child') do
           exepect(page).to have_content('Newest')
@@ -62,6 +64,8 @@ RSpec.describe 'Items dashboard' do
     end
 
     it 'should have oldest item' do
+      visit '/items-dashboard'
+
       within('.cards .card:last-child') do
         within('li:last-child') do
           exepect(page).to have_content('Oldest')

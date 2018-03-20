@@ -105,7 +105,7 @@ RSpec.describe Item do
       expect(item.formatted_price).to eq('$1,234.56')
     end
 
-    it 'should be able to get average price of items as formatted string'
+    it 'should be able to get average price of items as formatted string' do
       Item.create(title: 'Foo',
                   description: 'Bar',
                   price: 1234,

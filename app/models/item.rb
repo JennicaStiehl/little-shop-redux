@@ -8,7 +8,11 @@ class Item < ActiveRecord::Base
   belongs_to :merchant
   has_many :invoice_items
 
-  def formatted_price
+  def self.avg_price
+    format_price(Item.average(:price))
+  end
+
+  def self.format_price(price)
     formatted = format('%2.2f', price / 100.0)
     top, bottom = formatted.split('.')
 
@@ -17,7 +21,11 @@ class Item < ActiveRecord::Base
     "$#{price_string}.#{bottom}"
   end
 
-  def deliminate(top)
+  def formatted_price
+    Item.format_price(price)
+  end
+
+  def self.deliminate(top)
     top.reverse!
     split_string = top.scan(/.{1,3}/)
     split_string.reverse!
