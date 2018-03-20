@@ -2,7 +2,7 @@
   erb :'partials/header',
       locals: {
         title: merchant.name,
-        dashboard: '/invoices-dashboard',
+        dashboard: '/merchants-dashboard',
         create: nil,
         buttons: {
           edit: {
@@ -17,3 +17,18 @@
       }
 %>
 
+<div class="container">
+  <ul class="cards">
+    <% merchant.items.find_each do |item| %>
+      <li class="card">
+        <a href="/items/<%= item.id %>">
+          <img src="<%= item.image %>" alt="<%= item.title %>" title="<%= item.title %>" />
+        </a>
+        <div class="info">
+          <a href="/items/<%= item.id %>"><%= item.title %></a>
+          <p>$<%= item.price %></p>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>
