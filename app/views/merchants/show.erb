@@ -1,12 +1,12 @@
 <%=
   erb :'partials/header',
       locals: {
-        title: 'Invoices',
+        title: merchant.name,
         dashboard: '/invoices-dashboard',
         create: nil,
         buttons: {
           edit: {
-            href: '/merchants/edit/',
+            href: "/merchants/#{merchant.id}/edit",
             text: 'Edit'
           },
           delete: {

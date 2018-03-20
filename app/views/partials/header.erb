@@ -12,8 +12,8 @@
       <h1 class="title"><%= title %></h1>
       <% unless buttons.nil? %>
         <% unless buttons[:create].nil? %>
-          <a href='<%= buttons[:create][:path] %>' class='button'>
-            <i class="far fa-plus-octagon"></i> Create A New <%= buttons[:create][:object] %>
+          <a href='<%= buttons[:create][:href] %>' class='button'>
+            <i class="far fa-plus-octagon"></i> Create A New <%= buttons[:create][:text] %>
           </a>
         <% end %>
         <ul class="buttons-row">
