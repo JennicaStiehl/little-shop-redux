@@ -12,7 +12,7 @@
     <input type='hidden' name='_method' value='PUT' />
     <h2 class="field-title">Merchant</h2>
     <select name="invoice[merchant_id]" class="field" disabled>
-      <option value="<%= invoice.merchant.id %>"><%= invoice.merchant.name %></option>
+      <option value="<%= invoice.merchant.id %>" selected><%= invoice.merchant.name %></option>
     </select>
     <h2 class="field-title">Status</h2>
     <select name="invoice[status]" value="<%= invoice.status %>" class="field">
