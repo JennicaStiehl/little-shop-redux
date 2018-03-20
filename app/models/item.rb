@@ -33,10 +33,14 @@ class Item < ActiveRecord::Base
   end
 
   def self.newest
-    Item.new
+    Item.all
+        .order('created_at DESC')
+        .first
   end
 
   def self.oldest
-    Item.new
+    Item.all
+        .order('created_at ASC')
+        .first
   end
 end

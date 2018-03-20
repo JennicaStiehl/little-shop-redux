@@ -1,6 +1,9 @@
 RSpec.describe 'Items dashboard' do
   before(:all) do
     DatabaseCleaner.clean
+    Merchant.create(name: 'Test Merchant')
+    Merchant.create(name: 'Test Merchant 2')
+
     Item.create(merchant_id: 1,
                 title: 'Test Item',
                 description: 'description',
