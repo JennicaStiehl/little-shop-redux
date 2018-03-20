@@ -25,7 +25,7 @@ RSpec.describe LittleShopApp do
         visit '/merchants/1'
 
         expect(page).to have_selector :css, 'a.button.edit'
-        expect(page).to have_selector :css, 'a.button.delete'
+        expect(page).to have_selector :css, '.button.button.delete'
       end
 
       it 'should go to the edit page when edit is clicked' do
