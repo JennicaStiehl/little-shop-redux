@@ -21,7 +21,7 @@
   <ul class="cards">
     <% merchants.find_each do |merchant| %>
       <li class="card">
-        <a href="/merchant/<%= merchant.id %>"><%= merchant.name%></a>
+        <a href="/merchants/<%= merchant.id %>"><%= merchant.name%></a>
         <div class="info">
           <p class="category">Item Count:</p>
           <p><%= merchant.item_count %></p>
