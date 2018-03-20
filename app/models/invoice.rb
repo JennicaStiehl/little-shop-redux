@@ -49,11 +49,21 @@ class Invoice < ActiveRecord::Base
   end
 
   def self.quantity_high_low
-    
+    highest = select('invoices.*, sum(quantity) AS sum')
+              .joins(:invoice_items)
+              .group(:invoice_id, :id)
+              .order('sum DESC')
+              .first
+
+    lowest = select('invoices.*, sum(quantity) AS sum')
+              .joins(:invoice_items)
+              .group(:invoice_id, :id)
+              .order('sum ASC')
+              .first
 
     {
-      highest: Invoice.new,
-      lowest: Invoice.new
+      highest: highest,
+      lowest: lowest
     }
   end
 end

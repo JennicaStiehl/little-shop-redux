@@ -136,7 +136,7 @@ RSpec.describe Invoice do
     it 'should be able to get the highest/lowest total quantity' do
       setup_invoices
 
-      result = Invoice.price_high_low
+      result = Invoice.quantity_high_low
 
       expect(result[:highest].id).to be(1)
       expect(result[:lowest].id).to be(8)
