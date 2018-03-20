@@ -1,4 +1,4 @@
-RSpec.describe 'Invoices edit view' do
+RSpec.describe 'Invoices show view' do
   before(:each) do
     DatabaseCleaner.clean
     Merchant.create(name: 'Test Merchant')
@@ -35,20 +35,35 @@ RSpec.describe 'Invoices edit view' do
 
   describe 'content' do
     it 'should have the invoice ID and status' do
-      visit '/invoices/1/edit'
+      visit '/invoices/1'
 
       expect(page).to have_content('Invoice: 1 - Pending')
     end
 
-    it 'should have a form content' do
-      visit '/invoices/1/edit'
-      expect(find('[name="invoice[merchant_id]"]').value).to eq('1')
-      expect(find('[name="invoice[status]"]').value).to eq('pending')
+    it 'should have an edit and delete button' do
+      visit '/invoices/1'
+
+      expect(page).to have_selector('a.button.edit')
+      expect(page).to have_selector('button.delete')
+    end
+
+    it 'should have the merchant name' do
+      visit '/invoices/1'
+
+      expect(page).to have_content('Test Merchant')
+    end
+
+    it 'should be able to link to the merchant' do
+      visit '/invoices/1'
+
+      click_on 'Test Merchant'
+
+      expect(current_path).to eq('/merchants/1')
     end
 
     context 'item table' do
       it 'should have a header' do
-        visit '/invoices/1/edit'
+        visit '/invoices/1'
 
         expect(page).to have_selector('table.items')
         within('table.items') do
@@ -62,7 +77,7 @@ RSpec.describe 'Invoices edit view' do
       end
 
       it 'should have a list of items' do
-        visit '/invoices/1/edit'
+        visit '/invoices/1'
 
         expect(page).to have_selector('table.items tbody')
         within('table.items tbody') do
@@ -80,32 +95,33 @@ RSpec.describe 'Invoices edit view' do
   end
 
   describe 'functionality' do
-    it 'should be able to edit the invoice status' do
-      visit '/invoices/1/edit'
-
-      select('Returned', :from => 'invoice[status]')
-
-      click_on 'Update Invoice'
-
-      expect(current_path).to eq '/invoices/1'
-      
-      expect(page).to have_content('Invoice: 1 - Returned')
-    end
-
-    it 'should be able to cancel the edit' do
-      visit '/invoices/1/edit'
-
-      click_on 'Cancel'
-
-      expect(current_path).to eq '/invoices'
-    end
-
     it 'should be able to click on an item' do
-      visit '/invoices/1/edit'
+      visit '/invoices/1'
 
       find('tbody tr:first-child td:first-child a').click
 
       expect(current_path).to eq '/items/1'
     end
   end
+
+  it 'should be able to go to the edit page' do
+    visit '/invoices/1'
+
+    click_on 'Edit'
+
+    expect(current_path).to eq '/invoices/1/edit'
+  end
+
+  it 'should be able to delete the invoice' do
+    visit '/invoices/1'
+
+    click_on 'Delete'
+
+    expect(current_path).to eq '/invoices'
+
+    within('.collection') do
+      expect(page).to_not have_content '1'
+    end
+  end
+
 end

@@ -96,6 +96,13 @@ RSpec.describe Item do
                   price: 1234,
                   image: 'image')
       expect(item.formatted_price).to eq('$12.34')
+
+
+      item = Item.create(title: 'Foo',
+                  description: 'Bar',
+                  price: 123456,
+                  image: 'image')
+      expect(item.formatted_price).to eq('$1,234.56')
     end
   end
 end
