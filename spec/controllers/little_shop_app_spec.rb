@@ -2,12 +2,13 @@ RSpec.describe LittleShopApp do
   describe 'paths' do
     before(:each) do
       DatabaseCleaner.clean
+      Merchant.create(name: 'Test Merchant')
       Item.create(title: 'Test Item',
                   description: 'description',
                   price: 1,
-                  image: 'link')
-      Merchant.create(name: 'Test Merchant')
-      Invoice.create(merchant_id: 1, status: 'shipped')
+                  image: 'link',
+                  merchant_id: 1)
+      Invoice.create(merchant_id: 1, status: 'shipped')       
     end
 
     after(:each) do
