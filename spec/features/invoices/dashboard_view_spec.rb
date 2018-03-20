@@ -57,9 +57,15 @@ RSpec.describe 'Invoice dashboard' do
 
     it 'should have status percentages' do
       within('.card:first-child') do
-        expect('.li:first-child').to have_content 'Pending 20%'
-        expect('.li:nth-child(2)').to have_content 'Shipped 70%'
-        expect('.li:last-child').to have_content 'Returned 10%'
+        within('li:first-child') do
+          expect(page).to have_content 'Pending 20%'
+        end
+        within('li:nth-child(2)') do
+          expect(page).to have_content 'Shipped 70%'
+        end
+        within('li:last-child') do
+          expect(page).to have_content 'Returned 10%'
+        end
       end
     end
   end
