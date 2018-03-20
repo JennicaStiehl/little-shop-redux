@@ -24,7 +24,10 @@
           <% end %>
           <% unless buttons[:delete].nil? %>
             <li>
-              <a href="<%= buttons[:delete][:href] %>" class="button delete"><%= buttons[:delete][:text] %></a>
+              <form action="<%= buttons[:delete][:href] %>" method="POST">
+                <input type="hidden" name="_method" value="DELETE" />
+                <button type="submit" class="button delete"><%= buttons[:delete][:text] %></button>
+              </form>
             </li>
           <% end %>
         </ul>

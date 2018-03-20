@@ -2,7 +2,7 @@
   erb :'partials/header',
       locals: {
         title: merchant.name,
-        dashboard: '/merchants-dashboard',
+        dashboard: nil,
         create: nil,
         buttons: {
           edit: {
@@ -10,8 +10,8 @@
             text: 'Edit'
           },
           delete: {
-            href: '#',
-            text: 'Delete'
+            href: "/merchants/#{merchant.id}",
+            text: 'Delete',
           }
         }
       }
