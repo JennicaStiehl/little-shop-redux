@@ -62,17 +62,17 @@ RSpec.describe 'Invoices edit view' do
       end
 
       it 'should have a list of items' do
-        visit '/invoices/1/edit' do
+        visit '/invoices/1/edit'
 
-          within('table.items tbody') do
-            expect(all('tr').length).to be(2)
+        expect(page).to have_selector('table.items tbody')
+        within('table.items tbody') do
+          expect(all('tr').length).to be(2)
 
-            within('tr:first-child') do
-              expect(page).to have_content('1')
-              expect(page).to have_content('Test item 1')
-              expect(page).to have_content('2')
-              expect(page).to have_content('$10.00')
-            end
+          within('tr:first-child') do
+            expect(page).to have_content('1')
+            expect(page).to have_content('Test item 1')
+            expect(page).to have_content('2')
+            expect(page).to have_content('$10.00')
           end
         end
       end
