@@ -10,10 +10,24 @@
   <div class="title-container">
     <div class="box">
       <h1 class="title"><%= title %></h1>
-      <% unless create.nil? %>
-        <a href='<%= create[:path] %>' class='button'>
-          <i class="far fa-plus-octagon"></i> Create A New <%= create[:object] %>
-        </a>
+      <% unless buttons.nil? %>
+        <% unless buttons[:create].nil? %>
+          <a href='<%= buttons[:create][:path] %>' class='button'>
+            <i class="far fa-plus-octagon"></i> Create A New <%= buttons[:create][:object] %>
+          </a>
+        <% end %>
+        <ul class="buttons-row">
+          <% unless buttons[:edit].nil? %>
+            <li>
+              <a href="<%= buttons[:edit][:href] %>" class="button edit"><%= buttons[:edit][:text] %></a>
+            </li>
+          <% end %>
+          <% unless buttons[:delete].nil? %>
+            <li>
+              <a href="<%= buttons[:delete][:href] %>" class="button delete"><%= buttons[:delete][:text] %></a>
+            </li>
+          <% end %>
+        </ul>
       <% end %>
     </div>
   </div>
