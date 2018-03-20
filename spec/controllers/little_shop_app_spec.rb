@@ -14,7 +14,7 @@ RSpec.describe LittleShopApp do
     end
 
     describe 'merchant paths' do
-      it 'should respond with a success code' do
+      it 'should have a success code for GET /merchants' do
         visit '/merchants'
         expect(page.status_code).to  eq 200
       end
