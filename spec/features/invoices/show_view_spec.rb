@@ -39,5 +39,81 @@ RSpec.describe 'Invoices show view' do
 
       expect(page).to have_content('Invoice: 1 - Pending')
     end
+
+    it 'should have an edit and delete button' do
+      visit '/invoices/1'
+
+      expect(page).to have_selector('a.button.edit')
+      expect(page).to have_selector('button.cancel')
+    end
+
+    it 'should have the merchant name' do
+      visit '/invoices/1'
+
+      expect(page).to have_content('Test Merchant')
+    end
+
+    context 'item table' do
+      it 'should have a header' do
+        visit '/invoices/1'
+
+        expect(page).to have_selector('table.items')
+        within('table.items') do
+          expect(page).to have_selector('thead')
+
+          within('thead') do
+            expect(page).to have_content('Item ID')
+            expect(page).to have_content('Quantity')
+          end
+        end
+      end
+
+      it 'should have a list of items' do
+        visit '/invoices/1'
+
+        expect(page).to have_selector('table.items tbody')
+        within('table.items tbody') do
+          expect(all('tr').length).to be(2)
+
+          within('tr:first-child') do
+            expect(page).to have_content('1')
+            expect(page).to have_content('Test item 1')
+            expect(page).to have_content('2')
+            expect(page).to have_content('$10.00')
+          end
+        end
+      end
+    end
   end
+
+  describe 'functionality' do
+    it 'should be able to click on an item' do
+      visit '/invoices/1'
+
+      find('tbody tr:first-child td:first-child a').click
+
+      expect(current_path).to eq '/items/1'
+    end
+  end
+
+  it 'should be able to go to the edit page' do
+    visit '/invoices/1'
+
+    click_on 'Edit'
+
+    expect(current_path).to eq '/invoices/1/edit'
+  end
+
+  it 'should be able to delete the invoice' do
+    visit '/invoices/1'
+
+    click_on 'Delete'
+
+    expect(current_path).to eq '/invoices/'
+
+    within('.collection') do
+      expect(page).to_not have_content '1'
+    end
+  end
+
 end
