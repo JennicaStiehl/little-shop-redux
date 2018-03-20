@@ -46,17 +46,17 @@ RSpec.describe 'Invoices index' do
       end
     end
 
-    describe 'create new link' do
-      it 'should link to /invoices/new' do
-        visit '/invoices'
-
-        within 'header' do
-          click_on 'Create A New Invoice'
-        end
-
-        expect(current_path).to eq '/invoices/new'
-      end
-    end
+    # describe 'create new link' do
+    #   it 'should link to /invoices/new' do
+    #     visit '/invoices'
+    #
+    #     within 'header' do
+    #       click_on 'Create A New Invoice'
+    #     end
+    #
+    #     expect(current_path).to eq '/invoices/new'
+    #   end
+    # end
 
     describe 'individual invoice link' do
       it 'should link to /invoices/:id' do

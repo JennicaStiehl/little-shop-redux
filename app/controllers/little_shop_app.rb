@@ -85,9 +85,9 @@ class LittleShopApp < Sinatra::Base
         locals: { invoices: Invoice.all }
   end
 
-  get '/invoices/new' do
-    erb :'invoices/new', locals: { merchants: Invoice.merchants }
-  end
+  # get '/invoices/new' do
+  #   erb :'invoices/new', locals: { merchants: Merchant.all }
+  # end
 
   post '/invoices' do
     Invoice.create(params[:invoice])
