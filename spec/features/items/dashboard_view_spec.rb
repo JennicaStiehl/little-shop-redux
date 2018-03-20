@@ -29,7 +29,7 @@ RSpec.describe 'Items dashboard' do
       visit '/items-dashboard'
 
       expect(page).to have_selector('.card')
-      expect(all('.cards').length).to be(3)
+      expect(all('.card').length).to be(3)
     end
 
     it 'should have the total number of items' do
