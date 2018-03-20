@@ -1,6 +1,12 @@
 RSpec.describe 'Invoice dashboard' do
   before(:all) do
     DatabaseCleaner.clean
+    Merchant.create(name: 'Test Merchant')
+
+    Item.create(title: 'Test Item 1', description: 'test', price: 1, image: 'a')
+    Item.create(title: 'Test Item 2', description: 'test', price: 1, image: 'a')
+    Item.create(title: 'Test Item 3', description: 'test', price: 1, image: 'a')
+
     Invoice.create(merchant_id: 1, status: 'shipped')
     Invoice.create(merchant_id: 1, status: 'shipped')
     Invoice.create(merchant_id: 1, status: 'shipped')
@@ -23,10 +29,10 @@ RSpec.describe 'Invoice dashboard' do
     InvoiceItem.create(item_id: 2,invoice_id: 3,quantity: 1,unit_price: 2000)
 
     InvoiceItem.create(item_id: 1,invoice_id: 4,quantity: 1,unit_price: 1000)
-    InvoiceItem.create(item_id: 1,invoice_id: 4,quantity: 1,unit_price: 1000)
+    InvoiceItem.create(item_id: 1,invoice_id: 4,quantity: 1,unit_price: 2000)
 
     InvoiceItem.create(item_id: 1,invoice_id: 5,quantity: 1,unit_price: 1000)
-    InvoiceItem.create(item_id: 1,invoice_id: 5,quantity: 1,unit_price: 1000)
+    InvoiceItem.create(item_id: 1,invoice_id: 5,quantity: 1,unit_price: 2000)
 
     InvoiceItem.create(item_id: 1,invoice_id: 6,quantity: 1,unit_price: 1000)
     InvoiceItem.create(item_id: 2,invoice_id: 6,quantity: 1,unit_price: 2000)
@@ -40,8 +46,6 @@ RSpec.describe 'Invoice dashboard' do
     InvoiceItem.create(item_id: 2,invoice_id: 9,quantity: 1,unit_price: 2000)
 
     InvoiceItem.create(item_id: 1,invoice_id: 10,quantity: 2,unit_price: 1000)
-
-    visit '/invoices-dashboard'
   end
 
   after(:all) do
@@ -50,11 +54,15 @@ RSpec.describe 'Invoice dashboard' do
 
   describe 'content' do
     it 'should have cards' do
+      visit '/invoices-dashboard'
+
       expect(page).to have_selector('.card')
       expect(all('.card').length).to be(3)
     end
 
     it 'should have status percentages' do
+      visit '/invoices-dashboard'
+
       within('.card:first-child') do
         within('li:first-child') do
           expect(page).to have_content 'Pending 20%'
@@ -69,6 +77,8 @@ RSpec.describe 'Invoice dashboard' do
     end
 
     it 'should have unit prices' do
+      visit '/invoices-dashboard'
+      
       within('.card:nth-child(2)') do
         within('#highest') do
           expect(page).to have_content 'Highest'
