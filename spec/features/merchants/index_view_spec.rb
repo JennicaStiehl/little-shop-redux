@@ -37,6 +37,13 @@ RSpec.describe 'Merchants index' do
   describe 'links' do
     describe 'dashboard link' do
       it 'should link to /merchants-dashboard' do
+        Merchant.create(name: 'Merchant')
+        Item.create(merchant_id: 1,
+                    title: 'Test Item',
+                    description: 'description',
+                    price: 1,
+                    image: 'link')
+                    
         visit '/merchants'
 
         within 'header' do
