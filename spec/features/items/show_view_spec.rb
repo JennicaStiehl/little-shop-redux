@@ -51,7 +51,7 @@ RSpec.describe LittleShopApp do
 
         click_on 'Test Merchant'
 
-        expect(current_path).to be '/merchants/1'
+        expect(current_path).to eq '/merchants/1'
       end
 
       it 'should have the item info' do
