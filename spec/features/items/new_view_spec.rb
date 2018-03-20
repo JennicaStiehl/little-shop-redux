@@ -1,4 +1,4 @@
-RSpec.describe 'Items index' do
+RSpec.describe 'Items /new' do
   before(:each) do
     DatabaseCleaner.clean
     Merchant.create(name: 'Test Merchant')

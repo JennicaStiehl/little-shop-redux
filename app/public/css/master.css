@@ -135,6 +135,8 @@ header .linkback a:hover {
 
 .button.icon.delete {
   padding-left: 10px;
+  background: none;
+  border: none;
 }
 
 .button.icon.delete:hover {
@@ -159,48 +161,4 @@ header .linkback a:hover {
 .banner-title {
   color: black;
   font-size: 36;
-}
-
-.new-form {
-  margin-top: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  border: 2px solid black;
-}
-
-.new-form * {
-  margin: 10px;
-  width: 90%;
-}
-
-.new-form h2 {
-  margin-bottom: 0px;
-}
-
-.new-form input, select {
-  height: 4%;
-}
-
-.new-form textarea {
-  height: 15%;
-}
-
-.new-form .buttons {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin: 10px;
-  font-size: 1em;
-}
-
-.new-form .button {
-  font-size: 1em;
-}
-
-.new-form .button.cancel {
-  margin-right: 60px;
-  text-align: center;
-  color: black;
 }
