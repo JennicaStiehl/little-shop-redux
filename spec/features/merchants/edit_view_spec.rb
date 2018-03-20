@@ -23,7 +23,7 @@ RSpec.describe 'Merchants /edit' do
   end
 
   describe 'functionality' do
-    it 'should create a new merchant' do
+    it 'should update a merchant' do
       visit '/merchants/1'
       expect(page).to have_content 'Test Merchant'
 

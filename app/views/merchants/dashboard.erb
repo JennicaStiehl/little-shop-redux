@@ -1,0 +1,36 @@
+<%=
+  erb :'partials/header',
+      locals: {
+        title: "Merchants Dashboard",
+        dashboard: nil,
+        buttons: nil
+      }
+%>
+
+<div class="container">
+  <div class="summary col-11">
+    <div class="summary-item">
+      <p>Merchant With Most Items:</p>
+      <a href="/merchants/<%= item_merch.id %>"><%= item_merch.name %></a>
+    </div>
+    <div class="summary-item">
+      <p>Merchant With Highest Price Item:</p>
+      <a href="/merchants/<%= price_merch.id %>"><%= price_merch.name %></a>
+    </div>
+  </div>
+  <ul class="cards">
+    <% merchants.find_each do |merchant| %>
+      <li class="card">
+        <a href="/merchant/<%= merchant.id %>"><%= merchant.name%></a>
+        <div class="info">
+          <p class="category">Item Count:</p>
+          <p><%= merchant.item_count %></p>
+          <p class="category">Avg Item Price:</p>
+          <p>$<%= merchant.avg_item_price %></p>
+          <p class="category">Total Cost of Items:</p>
+          <p>$<%= merchant.total_cost %></p>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>

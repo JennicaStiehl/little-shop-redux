@@ -8,6 +8,7 @@ RSpec.describe LittleShopApp do
                   price: 1,
                   image: 'link',
                   merchant_id: 1)
+      Invoice.create(merchant_id: 1, status: 'shipped')       
     end
 
     after(:each) do
@@ -35,8 +36,14 @@ RSpec.describe LittleShopApp do
         expect(page.status_code).to eq 200
       end
 
-      it 'should have a success code for GET /merchants/:id/edit' do
-        visit '/merchants/1/edit'
+      it 'should have a success code for GET /merchants-dashboard' do
+        Merchant.create(name: 'Merchant')
+        Item.create(merchant_id: 1,
+                    title: 'Test Item',
+                    description: 'description',
+                    price: 1,
+                    image: 'link')
+        visit '/merchants-dashboard'
         expect(page.status_code).to eq 200
       end
     end
@@ -62,8 +69,30 @@ RSpec.describe LittleShopApp do
         expect(page.status_code).to eq 200
       end
 
-      it 'should have a success code for GET /items/:id/edit' do
-        visit '/items/1/edit'
+      it 'should have a success code for GET /items-dashboard' do
+        visit '/items-dashboard'
+        expect(page.status_code).to eq 200
+      end
+    end
+
+    describe 'invoice paths' do
+      it 'should have a success code for GET /invoices' do
+        visit '/invoices'
+        expect(page.status_code).to eq 200
+      end
+
+      it 'should have a success code for GET /invoices/:id' do
+        visit '/invoices/1'
+        expect(page.status_code).to eq 200
+      end
+
+      it 'should have a success code for GET /invoices/:id/edit' do
+        visit '/invoices/1/edit'
+        expect(page.status_code).to eq 200
+      end
+
+      it 'should have a success code for GET /invoices-dashboard' do
+        visit '/invoices-dashboard'
         expect(page.status_code).to eq 200
       end
     end

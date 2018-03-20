@@ -77,7 +77,9 @@ class LittleShopApp < Sinatra::Base
   end
 
   get '/merchants-dashboard' do
-    erb :'merchants/dashboard'
+    erb :'merchants/dashboard', locals: { merchants: Merchant.all,
+                                          item_merch: Merchant.most_items,
+                                          price_merch: Merchant.highest_cost }
   end
 
   get '/invoices' do
