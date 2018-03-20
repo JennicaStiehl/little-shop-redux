@@ -22,3 +22,8 @@ ul.collection li.collection-item .secondary-content {
 ul.collection li.collection-item:nth-child(even) {
   background: #CCC;
 }
+
+ul.collection li.collection-item button {
+  background: transparent;
+  border: 0;
+}
