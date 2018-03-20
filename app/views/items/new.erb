@@ -1,24 +1,31 @@
 <%=
   erb :'partials/header',
       locals: {
-        title: 'Create New Invoice',
+        title: 'Create New Item',
         dashboard: nil,
         create: nil
       }
 %>
 
-<div class="container col-6" style="background:#FF0000;">
-  <form action="/items" method="POST">
-    <select name="item[merchant_id]" value="Merchant">
+<div class="container col-8">
+  <form action="/items" method="POST" class="input-form">
+    <h2 class="field-title">Merchant</h2>
+    <select name="item[merchant_id]" value="Merchant" class="field">
       <% merchants.each do |merchant| %>
         <option value="<%= merchant.id %>"> <%= merchant.name %> </option>
       <% end %>
     </select>
-    <input type="text" name="item[title]" value="Title">
-    <textarea name="item[description]">Description</textarea>
-    <input type="number" name="item[price]" value="Price">
-    <input type="url" name="item[image]" value="Image URL">
-    <a href="/items" class="button cancel">Cancel</a>
-    <button type="submit" class="button create">Create Item</button>
+    <h2>Title</h2>
+    <input type="text" name="item[title]" value="Title" class="field">
+    <h2>Description</h2>
+    <textarea name="item[description]" class="large-field">Description</textarea>
+    <h2>Price</h2>
+    <input type="number" name="item[price]" value="0" class="field">
+    <h2>Image URL</h2>
+    <input type="url" name="item[image]" value="Image URL" class="field">
+    <div class="buttons">
+      <a href="/items" class="button cancel">Cancel</a>
+      <button type="submit" class="button create">Create Item</button>
+    </div>
   </form>
 </div>

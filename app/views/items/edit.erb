@@ -1,0 +1,32 @@
+<%=
+  erb :'partials/header',
+      locals: {
+        title: "Update #{item.title}",
+        dashboard: nil,
+        create: nil
+      }
+%>
+
+<div class="container col-8">
+  <form action="/items/<%= item.id %>" method="POST" class="input-form">
+    <input type='hidden' name='_method' value='PUT' />
+    <h2 class="field-title">Merchant</h2>
+    <select name="item[merchant_id]" value="Merchant" class="field">
+      <% merchants.each do |merchant| %>
+        <option value="<%= merchant.id %>"> <%= merchant.name %> </option>
+      <% end %>
+    </select>
+    <h2>Title</h2>
+    <input type="text" name="item[title]" value="<%= item.title %>" class="field">
+    <h2>Description</h2>
+    <textarea name="item[description]" class="large-field"><%= item.description %></textarea>
+    <h2>Price</h2>
+    <input type="number" name="item[price]" value="<%= item.price %>" class="field">
+    <h2>Image URL</h2>
+    <input type="url" name="item[image]" value="<%= item.image %>" class="field">
+    <div class="buttons">
+      <a href="/items" class="button cancel">Cancel</a>
+      <button type="submit" class="button create">Update Item</button>
+    </div>
+  </form>
+</div>

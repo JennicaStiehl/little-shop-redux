@@ -126,11 +126,17 @@ header .linkback a:hover {
   font-size: 1.5em;
 
   color: #333;
-  text-decoration: none;
+  text-decoration: none ;
 
   cursor: pointer;
 
   transition: color 0.25s;
+}
+
+.button.icon.delete {
+  padding-left: 10px;
+  background: none;
+  border: none;
 }
 
 .button.icon.delete:hover {

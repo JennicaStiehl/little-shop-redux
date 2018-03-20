@@ -1,0 +1,19 @@
+<%=
+  erb :'partials/header',
+      locals: {
+        title: 'Create New Merchant',
+        dashboard: nil,
+        create: nil
+      }
+%>
+
+<div class="container col-6">
+  <form action="/merchants" method="POST" class="input-form">
+    <h2 class="field-title">Name</h2>
+    <input type="text" name="merchant[name]" value="Name">
+    <div class="buttons">
+      <a href="/merchants" class="button cancel">Cancel</a>
+      <button type="submit" class="button create">Create Merchant</button>
+    </div>
+  </form>
+</div>
