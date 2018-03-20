@@ -28,4 +28,11 @@ class Invoice < ActiveRecord::Base
     percentage *= 100
     percentage.round
   end
+
+  def self.price_low_high
+    {
+      highest: Invoice.new,
+      lowest: Invoice.new
+    }
+  end
 end

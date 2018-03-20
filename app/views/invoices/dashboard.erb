@@ -28,6 +28,30 @@
     </li>
     <li class="card">
       <h3>Unit Prices</h3>
+      <ul>
+        <li id="highest">
+          <h4>Highest</h4>
+          <ul class="inline">
+            <li>
+              <p class="left">Invoice:</p>
+              <p class="right">
+                <a href="/invoices/<%= prices[:highest].id %>"><%= prices[:highest].id %></a>
+              </p>
+            </li>
+          </ul>
+        </li>
+        <li id="lowest">
+          <h4>Lowest</h4>
+          <ul class="inline">
+            <li>
+              <p class="left">Invoice:</p>
+              <p class="right">
+                <a href="/invoices/<%= prices[:lowest].id %>"><%= prices[:lowest].id %></a>
+              </p>
+            </li>
+          </ul>
+        </li>
+      </ul>
     </li>
     <li class="card">
       <h3>Quantity</h3>
