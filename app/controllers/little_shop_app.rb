@@ -41,7 +41,9 @@ class LittleShopApp < Sinatra::Base
   end
 
   get '/merchants' do
-    erb :'merchants/index', locals: { merchants: Merchant.all }
+    erb :'merchants/index',
+        locals: { merchants: Merchant.all },
+        layout: :list_layout
   end
 
   get '/merchants/new' do
@@ -79,7 +81,9 @@ class LittleShopApp < Sinatra::Base
   end
 
   get '/invoices' do
-    erb :'invoices/index', locals: { invoices: Invoice.all }
+    erb :'invoices/index',
+        locals: { invoices: Invoice.all },
+        layout: :list_layout
   end
 
   get '/invoices/new' do
