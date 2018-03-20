@@ -30,17 +30,7 @@ class Invoice < ActiveRecord::Base
   end
 
   def self.price_high_low
-    highest = select('invoices.*, sum(unit_price * quantity) AS sum')
-              .joins(:invoice_items)
-              .group(:invoice_id, :id)
-              .order('sum DESC')
-              .first
-
-    lowest = select('invoices.*, sum(unit_price * quantity) AS sum')
-              .joins(:invoice_items)
-              .group(:invoice_id, :id)
-              .order('sum ASC')
-              .first
+    highest, lowest = price_selector
 
     {
       highest: highest,
@@ -49,21 +39,34 @@ class Invoice < ActiveRecord::Base
   end
 
   def self.quantity_high_low
-    highest = select('invoices.*, sum(quantity) AS sum')
-              .joins(:invoice_items)
-              .group(:invoice_id, :id)
-              .order('sum DESC')
-              .first
-
-    lowest = select('invoices.*, sum(quantity) AS sum')
-              .joins(:invoice_items)
-              .group(:invoice_id, :id)
-              .order('sum ASC')
-              .first
-
+    highest, lowest = quantity_selector
     {
       highest: highest,
       lowest: lowest
     }
+  end
+
+  def self.price_selector
+    result = select('invoices.*, sum(unit_price * quantity) AS sum')
+             .joins(:invoice_items)
+             .group(:invoice_id, :id)
+             .order('sum DESC')
+
+    [
+      result[0],
+      result[-1]
+    ]
+  end
+
+  def self.quantity_selector
+    result = select('invoices.*, sum(quantity) AS sum')
+             .joins(:invoice_items)
+             .group(:invoice_id, :id)
+             .order('sum DESC')
+
+    [
+      result[0],
+      result[-1]
+    ]
   end
 end

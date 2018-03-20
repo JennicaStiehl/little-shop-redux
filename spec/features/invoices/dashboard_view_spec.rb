@@ -78,7 +78,7 @@ RSpec.describe 'Invoice dashboard' do
 
     it 'should have unit prices' do
       visit '/invoices-dashboard'
-      
+
       within('.card:nth-child(2)') do
         within('#highest') do
           expect(page).to have_content 'Highest'
@@ -101,6 +101,8 @@ RSpec.describe 'Invoice dashboard' do
     end
 
     it 'should have quantities' do
+      visit '/invoices-dashboard'
+      
       within('.card:last-child') do
         within('#highest') do
           expect(page).to have_content 'Highest'
