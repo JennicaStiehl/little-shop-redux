@@ -14,10 +14,18 @@ class Invoice < ActiveRecord::Base
   def self.status_percentages
     total = Invoice.count.to_f
 
-    {
-      pending: (Invoice.where(status: 'pending').count / total) * 100,
-      shipped: (Invoice.where(status: 'shipped').count / total) * 100,
-      returned: (Invoice.where(status: 'returned').count / total) * 100
+    out = {
+      pending: percentage('pending', total),
+      shipped: percentage('shipped', total)
     }
+    out[:returned] = 100 - out.values.sum
+
+    out
+  end
+
+  def self.percentage(status, total)
+    percentage = Invoice.where(status: status).count / total
+    percentage *= 100
+    percentage.round
   end
 end
