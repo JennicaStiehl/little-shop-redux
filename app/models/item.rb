@@ -7,4 +7,8 @@ class Item < ActiveRecord::Base
 
   belongs_to :merchant
   has_many :invoice_items
+
+  def formatted_price
+    format('$%2.2f', price / 100.0)
+  end
 end

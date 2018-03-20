@@ -1,8 +1,35 @@
-<a href='/items'>All Items</a>
+<%=
+  erb :'partials/header',
+      locals: {
+        title: item.title,
+        dashboard: nil,
+        buttons: {
+          edit: {
+            href: "/items/#{item.id}/edit",
+            text: 'Edit'
+          },
+          delete: {
+            href: "/items/#{item.id}",
+            text: 'Delete'
+          }
+        }
+      }
+%>
 
-
-<h1><%= item.title %></h1>
-<p><%= item.image %></p>
-<p><%= item.price %></p>
-
-<p><%= item.description %></p>
+<div class="container">
+  <div class="row">
+    <div class="col item-image">
+      <h2><a href="/merchants/<%= item.merchant.id %>"><%= item.merchant.name %></a></h2>
+      <div class="image">
+        <img src="<%= item.image %>" alt="<%= item.title %>" />
+      </div>
+    </div>
+    <div class="col">
+      <h1><%= item.title %></h2>
+      <h2 class="price"><%= item.formatted_price %></h2>
+      <p class="description">
+        <%= item.description %>
+      </p>
+    </div>
+  </div>
+</div>
