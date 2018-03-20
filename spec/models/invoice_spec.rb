@@ -10,8 +10,8 @@ def setup_invoices
   Invoice.create(merchant_id: 1, status: 'returned')
   Invoice.create(merchant_id: 1, status: 'pending')
 
-  InvoiceItem.create(item_id: 1,invoice_id: 1,quantity: 2,unit_price: 1000)
-  InvoiceItem.create(item_id: 2,invoice_id: 1,quantity: 1,unit_price: 2000)
+  InvoiceItem.create(item_id: 1,invoice_id: 1,quantity: 2,unit_price: 1000) # Highest unit cost
+  InvoiceItem.create(item_id: 2,invoice_id: 1,quantity: 1,unit_price: 2000) # Highest quantity
   InvoiceItem.create(item_id: 3,invoice_id: 1,quantity: 2,unit_price: 3000)
 
   InvoiceItem.create(item_id: 1,invoice_id: 2,quantity: 1,unit_price: 1000)
@@ -21,10 +21,10 @@ def setup_invoices
   InvoiceItem.create(item_id: 2,invoice_id: 3,quantity: 1,unit_price: 2000)
 
   InvoiceItem.create(item_id: 1,invoice_id: 4,quantity: 1,unit_price: 1000)
-  InvoiceItem.create(item_id: 1,invoice_id: 4,quantity: 1,unit_price: 1000)
+  InvoiceItem.create(item_id: 1,invoice_id: 4,quantity: 1,unit_price: 2000)
 
   InvoiceItem.create(item_id: 1,invoice_id: 5,quantity: 1,unit_price: 1000)
-  InvoiceItem.create(item_id: 1,invoice_id: 5,quantity: 1,unit_price: 1000)
+  InvoiceItem.create(item_id: 1,invoice_id: 5,quantity: 1,unit_price: 2000)
 
   InvoiceItem.create(item_id: 1,invoice_id: 6,quantity: 1,unit_price: 1000)
   InvoiceItem.create(item_id: 2,invoice_id: 6,quantity: 1,unit_price: 2000)
@@ -32,12 +32,12 @@ def setup_invoices
   InvoiceItem.create(item_id: 2,invoice_id: 7,quantity: 1,unit_price: 2000)
   InvoiceItem.create(item_id: 2,invoice_id: 7,quantity: 1,unit_price: 2000)
 
-  InvoiceItem.create(item_id: 2,invoice_id: 8,quantity: 1,unit_price: 3000)
+  InvoiceItem.create(item_id: 2,invoice_id: 8,quantity: 1,unit_price: 3000) # Lowest quantity
 
   InvoiceItem.create(item_id: 1,invoice_id: 9,quantity: 1,unit_price: 1000)
   InvoiceItem.create(item_id: 2,invoice_id: 9,quantity: 1,unit_price: 2000)
 
-  InvoiceItem.create(item_id: 1,invoice_id: 10,quantity: 2,unit_price: 1000)
+  InvoiceItem.create(item_id: 1,invoice_id: 10,quantity: 2,unit_price: 1000) # Lowest unit cost
 end
 
 RSpec.describe Invoice do
