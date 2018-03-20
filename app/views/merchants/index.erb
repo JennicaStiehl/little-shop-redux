@@ -19,7 +19,7 @@
           <form action="/merchants/<%= merchant.id %>" method="POST">
             <input type="hidden" name="_method" value="DELETE">
             <a href="/merchants/<%= merchant.id %>/edit" class="icon button edit"><i class="far fa-edit"></i></a>
-            <a href="#" class="icon button delete"><i class="far fa-trash"></i></a>
+            <button type="submit" class="icon button delete"><i class="far fa-trash"></i></button>
           </form>
         </div>
       </li>

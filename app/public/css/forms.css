@@ -1,0 +1,44 @@
+
+.input-form {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  border: 2px solid black;
+}
+
+.input-form * {
+  margin: 10px;
+  width: 90%;
+}
+
+.input-form .field-title {
+  margin-bottom: 0px;
+}
+
+.input-form .field {
+  height: 4%;
+}
+
+.input-form .large-field {
+  height: 15%;
+}
+
+.input-form .buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 10px;
+  font-size: 1em;
+}
+
+.input-form .button {
+  font-size: 1em;
+}
+
+.input-form .button.cancel {
+  margin-right: 60px;
+  text-align: center;
+  color: black;
+}
