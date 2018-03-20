@@ -82,7 +82,9 @@ RSpec.describe 'Invoices index' do
       it 'should link to /invoices/:id/edit' do
         visit '/invoices'
 
-        first('.collection-item').click_on 'Edit'
+        within first('.secondary-content') do
+          find(:css, 'a').click
+        end
 
         expect(current_path).to eq '/invoices/1/edit'
       end
@@ -93,10 +95,14 @@ RSpec.describe 'Invoices index' do
         visit '/invoices'
         expect(page).to have_selector('.collection-item', count: 2)
 
-        first('.collection-item').click_on 'Delete'
+        within first('.secondary-content') do
+          find(:css, 'button').click
+        end
         expect(page).to have_selector('.collection-item', count: 1)
 
-        first('.collection-item').click_on 'Delete'
+        within first('.secondary-content') do
+          find(:css, 'button').click
+        end
         expect(page).to have_selector('.collection-item', count: 0)
       end
     end
