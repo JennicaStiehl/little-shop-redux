@@ -44,13 +44,21 @@ RSpec.describe 'Invoices show view' do
       visit '/invoices/1'
 
       expect(page).to have_selector('a.button.edit')
-      expect(page).to have_selector('button.cancel')
+      expect(page).to have_selector('button.delete')
     end
 
     it 'should have the merchant name' do
       visit '/invoices/1'
 
       expect(page).to have_content('Test Merchant')
+    end
+
+    it 'should be able to link to the merchant' do
+      visit '/invoices/1'
+
+      click_on 'Test Merchant'
+
+      expect(current_path).to eq('/merchants/1')
     end
 
     context 'item table' do
@@ -109,7 +117,7 @@ RSpec.describe 'Invoices show view' do
 
     click_on 'Delete'
 
-    expect(current_path).to eq '/invoices/'
+    expect(current_path).to eq '/invoices'
 
     within('.collection') do
       expect(page).to_not have_content '1'
