@@ -14,7 +14,7 @@ RSpec.describe 'Invoice dashboard' do
 
     InvoiceItem.create(item_id: 1,invoice_id: 1,quantity: 2,unit_price: 1000)
     InvoiceItem.create(item_id: 2,invoice_id: 1,quantity: 1,unit_price: 2000)
-    InvoiceItem.create(item_id: 3,invoice_id: 1,quantity: 2,unit_price: 3000)
+    InvoiceItem.create(item_id: 3,invoice_id: 1,quantity: 2,unit_price: 5000)
 
     InvoiceItem.create(item_id: 1,invoice_id: 2,quantity: 1,unit_price: 1000)
     InvoiceItem.create(item_id: 2,invoice_id: 2,quantity: 1,unit_price: 2000)
@@ -34,13 +34,12 @@ RSpec.describe 'Invoice dashboard' do
     InvoiceItem.create(item_id: 2,invoice_id: 7,quantity: 1,unit_price: 2000)
     InvoiceItem.create(item_id: 2,invoice_id: 7,quantity: 1,unit_price: 2000)
 
-    InvoiceItem.create(item_id: 2,invoice_id: 8,quantity: 1,unit_price: 2000)
-    InvoiceItem.create(item_id: 2,invoice_id: 8,quantity: 1,unit_price: 2000)
+    InvoiceItem.create(item_id: 2,invoice_id: 8,quantity: 1,unit_price: 3000)
 
     InvoiceItem.create(item_id: 1,invoice_id: 9,quantity: 1,unit_price: 1000)
     InvoiceItem.create(item_id: 2,invoice_id: 9,quantity: 1,unit_price: 2000)
 
-    InvoiceItem.create(item_id: 1,invoice_id: 10,quantity: 1,unit_price: 1000)
+    InvoiceItem.create(item_id: 1,invoice_id: 10,quantity: 2,unit_price: 1000)
 
     visit '/invoices-dashboard'
   end
@@ -65,6 +64,50 @@ RSpec.describe 'Invoice dashboard' do
         end
         within('li:last-child') do
           expect(page).to have_content 'Returned 10%'
+        end
+      end
+    end
+
+    it 'should have unit prices' do
+      within('.card:nth-child(2)') do
+        within('#highest') do
+          expect(page).to have_content 'Highest'
+
+          expect(page).to have_content 'Invoice: 1'
+
+          find('a').click
+          expect(current_path).to eq('/invoices/1')
+        end
+
+        within('#lowest') do
+          expect(page).to have_content 'Lowest'
+
+          expect(page).to have_content 'Invoice: 10'
+
+          find('a').click
+          expect(current_path).to eq('/invoices/10')
+        end
+      end
+    end
+
+    it 'should have quantities' do
+      within('.card:last-child') do
+        within('#highest') do
+          expect(page).to have_content 'Highest'
+
+          expect(page).to have_content 'Invoice: 1'
+
+          find('a').click
+          expect(current_path).to eq('/invoices/1')
+        end
+
+        within('#lowest') do
+          expect(page).to have_content 'Lowest'
+
+          expect(page).to have_content 'Invoice: 8'
+
+          find('a').click
+          expect(current_path).to eq('/invoices/8')
         end
       end
     end
