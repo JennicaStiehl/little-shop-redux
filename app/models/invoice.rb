@@ -29,7 +29,7 @@ class Invoice < ActiveRecord::Base
     percentage.round
   end
 
-  def self.price_low_high
+  def self.price_high_low
     {
       highest: Invoice.new,
       lowest: Invoice.new

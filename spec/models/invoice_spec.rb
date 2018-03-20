@@ -32,13 +32,12 @@ def setup_invoices
   InvoiceItem.create(item_id: 2,invoice_id: 7,quantity: 1,unit_price: 2000)
   InvoiceItem.create(item_id: 2,invoice_id: 7,quantity: 1,unit_price: 2000)
 
-  InvoiceItem.create(item_id: 2,invoice_id: 8,quantity: 1,unit_price: 2000)
-  InvoiceItem.create(item_id: 2,invoice_id: 8,quantity: 1,unit_price: 2000)
+  InvoiceItem.create(item_id: 2,invoice_id: 8,quantity: 1,unit_price: 3000)
 
   InvoiceItem.create(item_id: 1,invoice_id: 9,quantity: 1,unit_price: 1000)
   InvoiceItem.create(item_id: 2,invoice_id: 9,quantity: 1,unit_price: 2000)
 
-  InvoiceItem.create(item_id: 1,invoice_id: 10,quantity: 1,unit_price: 1000)
+  InvoiceItem.create(item_id: 1,invoice_id: 10,quantity: 2,unit_price: 1000)
 end
 
 RSpec.describe Invoice do
@@ -123,6 +122,15 @@ RSpec.describe Invoice do
       setup_invoices
 
       expect(Invoice.status_percentages).to eq(expected)
+    end
+
+    it 'should be able to get highest/lowest total unit price' do
+      setup_invoices
+
+      result = Invoice.price_high_low
+
+      expect(result[:highest].id).to be(1)
+      expect(result[:lowest].id).to be(10)
     end
   end
 end
