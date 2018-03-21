@@ -3,6 +3,7 @@
       locals: {
         title: 'Items',
         dashboard: '/items-dashboard',
+        brand_logo: nil,
         buttons: {
           create: {
             text: 'Item',
@@ -21,7 +22,7 @@
         </a>
         <div class="info">
           <a href="/items/<%= item.id %>"><%= item.title %></a>
-          <p>$<%= item.price %></p>
+          <p><%= item.formatted_price %></p>
         </div>
       </li>
     <% end %>

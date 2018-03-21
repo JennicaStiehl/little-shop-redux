@@ -57,7 +57,7 @@ RSpec.describe 'Invoice dashboard' do
       visit '/invoices-dashboard'
 
       expect(page).to have_selector('.card')
-      expect(all('.card').length).to be(3)
+      expect(all('.card').length).to be(4)
     end
 
     it 'should have status percentages' do
@@ -102,8 +102,8 @@ RSpec.describe 'Invoice dashboard' do
 
     it 'should have quantities' do
       visit '/invoices-dashboard'
-      
-      within('.card:last-child') do
+
+      within('.card:nth-child(3)') do
         within('#highest') do
           expect(page).to have_content 'Highest'
 

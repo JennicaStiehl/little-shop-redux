@@ -3,7 +3,8 @@
       locals: {
         title: 'Invoices Dashboard',
         dashboard: nil,
-        buttons: nil
+        buttons: nil,
+        brand_logo: nil
       }
 %>
 
@@ -80,5 +81,21 @@
         </li>
       </ul>
     </li>
+    <li class="card">
+      <div id="chart_div"></div>
+    </li>
   </ul>
 </div>
+
+<!-- adds google chart -->
+<script type="text/javascript">
+  let chartData = [
+    ['Pending', <%= percentages[:pending] %>],
+    ['Shipped', <%= percentages[:shipped] %>],
+    ['Returned', <%= percentages[:returned] %>],
+  ];
+</script>
+
+<!-- Google Charts Sripts -->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="/javascript/google_charts.js"></script>

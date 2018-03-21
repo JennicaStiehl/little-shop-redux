@@ -9,7 +9,12 @@
   <% end %>
   <div class="title-container">
     <div class="box">
-      <h1 class="title"><%= title %></h1>
+      <% unless brand_logo.nil? %>
+        <img src="<%= brand_logo %>" class="brand-logo" />
+      <% end %>
+      <% unless title.nil? %>
+        <h1 class="title"><%= title %></h1>
+      <% end %>
       <% unless buttons.nil? %>
         <% unless buttons[:create].nil? %>
           <a href='<%= buttons[:create][:href] %>' class='button'>

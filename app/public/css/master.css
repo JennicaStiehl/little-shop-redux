@@ -124,7 +124,9 @@ nav .title {
 .summary {
   height: 15%;
   margin: 20px;
-  background-color: #598bdb;
+  background: #aac3ec url('/images/header-bg.png');
+  background-size: contain;
+  background-repeat: no-repeat;
   box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
   display: flex;
   flex-direction: row;
@@ -161,4 +163,23 @@ nav .title {
   margin-bottom: 5px;
   font-weight: bold;
   text-decoration: underline;
+}
+
+.container .text {
+  padding: 1em;
+}
+
+.container .text h2 {
+  font-size: 2em;
+}
+
+.container .text .shop {
+  width: 100%;
+  height: 100%;
+  margin-top: 3em;
+  background: #FFF url(/images/shop-bg.png);
+
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: 40%;
 }
