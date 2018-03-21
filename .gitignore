@@ -25,7 +25,6 @@ Thumbs.db
 #########
 *.rbc
 capybara-*.html
-.rspec
 /public/system
 */coverage/
 /spec/tmp
