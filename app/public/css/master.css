@@ -67,15 +67,6 @@ nav .title {
   cursor: pointer;
 }
 
-.buttons-row {
-  display: inline-block;
-  align-items: center;
-}
-
-.buttons-row * {
-  margin-left: 17px;
-}
-
 .button.delete {
   font-size: 1em;
 }
