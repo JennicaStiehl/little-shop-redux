@@ -170,3 +170,14 @@ nav .title {
 .container .text h2 {
   font-size: 2em;
 }
+
+.container .text .shop {
+  width: 100%;
+  height: 100%;
+  margin-top: 3em;
+  background: #FFF url(/images/shop-bg.png);
+
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: 40%;
+}
