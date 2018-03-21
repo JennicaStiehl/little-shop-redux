@@ -17,7 +17,7 @@
 
         // Set chart options
         var options = {'title':'Invoice Status Percentages',
-                       'width':400,
+                       'width':360,
                        'height':300};
 
         // Instantiate and draw our chart, passing in some options.
