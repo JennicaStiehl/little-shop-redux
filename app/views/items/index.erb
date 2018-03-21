@@ -3,15 +3,17 @@
       locals: {
         title: 'Items',
         dashboard: '/items-dashboard',
-        create: {
-          object: 'Item',
-          path: '/items/new'
+        buttons: {
+          create: {
+            text: 'Item',
+            href: '/items/new'
+          }
         }
       }
 %>
 
 <div class="container">
-  <ul class="items">
+  <ul class="cards">
     <% items.find_each do |item| %>
       <li class="card">
         <a href="/items/<%= item.id %>">

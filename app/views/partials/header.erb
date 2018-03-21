@@ -1,14 +1,36 @@
 <header>
   <% unless dashboard.nil? %>
-    <a href="<%= dashboard %>" class="linkBack">Dashboard</a>
+  <div class="linkBack">
+    <a href="<%= dashboard %>" class="link">
+      <i class="far fa-chevron-left"></i>
+      Dashboard
+    </a>
+  </div>
   <% end %>
   <div class="title-container">
     <div class="box">
       <h1 class="title"><%= title %></h1>
-      <% unless create.nil? %>
-        <a href='<%= create[:path] %>' class='button'>
-          Create A New <%= create[:object] %>
-        </a>
+      <% unless buttons.nil? %>
+        <% unless buttons[:create].nil? %>
+          <a href='<%= buttons[:create][:href] %>' class='button'>
+            <i class="far fa-plus-octagon"></i> Create A New <%= buttons[:create][:text] %>
+          </a>
+        <% end %>
+        <ul class="buttons-row">
+          <% unless buttons[:edit].nil? %>
+            <li>
+              <a href="<%= buttons[:edit][:href] %>" class="button edit"><%= buttons[:edit][:text] %></a>
+            </li>
+          <% end %>
+          <% unless buttons[:delete].nil? %>
+            <li>
+              <form action="<%= buttons[:delete][:href] %>" method="POST">
+                <input type="hidden" name="_method" value="DELETE" />
+                <button type="submit" class="button delete"><%= buttons[:delete][:text] %></button>
+              </form>
+            </li>
+          <% end %>
+        </ul>
       <% end %>
     </div>
   </div>

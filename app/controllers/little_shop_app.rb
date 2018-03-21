@@ -7,7 +7,7 @@ class LittleShopApp < Sinatra::Base
   end
 
   get '/items/new' do
-    erb :'items/new'
+    erb :'items/new', locals: { merchants: Merchant.all }
   end
 
   post '/items' do
@@ -27,13 +27,14 @@ class LittleShopApp < Sinatra::Base
   end
 
   get '/items/:id/edit' do
-    erb :'items/edit', locals: { item: Item.find(params[:id]) }
+    erb :'items/edit', locals: { item: Item.find(params[:id]),
+                                 merchants: Merchant.all }
   end
 
   put '/items/:id' do
-    Item.update(params[:item])
+    Item.find(params[:id]).update(params[:item])
 
-    redirect '/item/:id'
+    redirect "/items/#{params[:id]}"
   end
 
   get '/items-dashboard' do
@@ -41,7 +42,8 @@ class LittleShopApp < Sinatra::Base
   end
 
   get '/merchants' do
-    erb :'merchants/index', locals: { merchants: Merchant.all }
+    erb :'merchants/index',
+        locals: { merchants: Merchant.all }
   end
 
   get '/merchants/new' do
@@ -49,7 +51,7 @@ class LittleShopApp < Sinatra::Base
   end
 
   post '/merchants' do
-    Merchant.create(params[:item])
+    Merchant.create(params[:merchant])
 
     redirect '/merchants'
   end
@@ -69,22 +71,25 @@ class LittleShopApp < Sinatra::Base
   end
 
   put '/merchants/:id' do
-    Merchant.update(params[:merchant])
+    Merchant.find(params[:id]).update(params[:merchant])
 
-    redirect '/merchant/:id'
+    redirect "/merchants/#{params[:id]}"
   end
 
   get '/merchants-dashboard' do
-    erb :'merchants/dashboard'
+    erb :'merchants/dashboard', locals: { merchants: Merchant.all,
+                                          item_merch: Merchant.most_items,
+                                          price_merch: Merchant.highest_cost }
   end
 
   get '/invoices' do
-    erb :'invoices/index', locals: { invoices: Invoice.all }
+    erb :'invoices/index',
+        locals: { invoices: Invoice.all }
   end
 
-  get '/invoices/new' do
-    erb :'invoices/new'
-  end
+  # get '/invoices/new' do
+  #   erb :'invoices/new', locals: { merchants: Merchant.all }
+  # end
 
   post '/invoices' do
     Invoice.create(params[:invoice])
@@ -107,12 +112,17 @@ class LittleShopApp < Sinatra::Base
   end
 
   put '/invoices/:id' do
-    Invoice.update(params[:invoice])
+    Invoice.find(params[:id]).update(params[:invoice])
 
-    redirect '/item/:id'
+    redirect "/invoices/#{params[:id]}"
   end
 
   get '/invoices-dashboard' do
-    erb :'invoices/dashboard'
+    erb :'invoices/dashboard',
+        locals: {
+          percentages: Invoice.status_percentages,
+          prices: Invoice.price_high_low,
+          quantity: Invoice.quantity_high_low
+        }
   end
 end

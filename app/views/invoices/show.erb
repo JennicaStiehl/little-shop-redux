@@ -1,0 +1,43 @@
+<%=
+  erb :'partials/header',
+      locals: {
+        title: "Invoice: #{invoice.id} - #{invoice.status.capitalize}",
+        dashboard: nil,
+        buttons: {
+          edit: {
+            href: "/invoices/#{invoice.id}/edit",
+            text: 'Edit'
+          },
+          delete: {
+            href: "/invoices/#{invoice.id}",
+            text: 'Delete'
+          }
+        }
+      }
+%>
+
+<div class="container col-6">
+  <div class="title">
+    <h1><a href="/merchants/<%= invoice.merchant.id %>"><%= invoice.merchant.name %></a></h1>
+  </div>
+  <table class="items">
+    <thead class="table-collection">
+      <tr class="table-header">
+        <th>Item ID</th>
+        <th>Item Title</th>
+        <th>Quantity</th>
+        <th>Unit Price</th>
+      </tr>
+    </thead>
+    <tbody class="table-collection">
+      <% invoice.invoice_items.find_each do |invoice_item| %>
+        <tr class="table-item">
+          <td><a href="/items/<%= invoice_item.item_id %>"><%= invoice_item.item_id %></a></td>
+          <td><%= invoice_item.item.title %></td>
+          <td><%= invoice_item.quantity %></td>
+          <td><%= invoice_item.formatted_price %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -9,14 +9,40 @@ nav {
   align-items: center;
 
   padding: 0 1em;
+
+  position: relative;
+
+  box-shadow: 0px 1px 5px 1px rgba(0,0,0,0.25);
+  z-index: 10;
 }
 
 nav a:hover {
   text-decoration: underline;
 }
-nav .title, nav a {
-  color: #696969;
-  font: helvetica;
+
+nav ul.right-nav {
+  padding: 0.5em;
+}
+
+nav ul.right-nav li {
+  display: inline-block;
+}
+
+nav ul.right-nav li a {
+  color: #8f8f8f;
+}
+
+nav .brand-logo {
+  position: absolute;
+  left: 1em;
+  height:100%;
+}
+
+nav .brand-logo img {
+  height: 85%;
+  position: relative;
+  top:50%;
+  transform:translateY(-50%);
 }
 
 nav a {
@@ -32,72 +58,48 @@ nav .title {
   flex-grow: 8;
 }
 
-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #dddddd;
-  height: 150px;
-  position:relative;
-}
-
-header .title-container {
-  position: absolute;
-  left:50%;
-  transform: translateX(-50%);
-
-  height: 100%;
-}
-
-header .title-container .box {
-  position: relative;
-  top:50%;
-  transform: translateY(-50%);
-}
-
-header .title-container .box .title {
-  position: relative;
-  margin-bottom: 0.5em;
-  text-align: center;
-
-  font-size: 2em;
-}
-
-header .title-container .box .button {
-  color: #666;
-  background: #CCC;
-}
-
-header .linkBack {
-  position: absolute;
-  top: 0.5em;
-  left: 0.5em;
-}
-
-.button {
+.button:not(.icon) {
   border: 1px solid #AAA;
-  border-radius: 2px;
+  border-radius: 5px;
   padding:0.5em;
   margin:0;
   text-decoration: none;
   cursor: pointer;
 }
 
-.button.edit {
-  background-color: #ffef77;
-  color: black;
-  padding: 10px;
-  margin: 5px;
-  font-size: 14;
-}
-
 .button.delete {
-  background-color: #ba4227;
-  padding: 10px;
-  margin: 5px;
-  font-size: 14;
+  font-size: 1em;
 }
 
+.button.edit {
+  padding-left: 1.125em;
+  padding-right: 1.125em;
+}
+
+.button.icon {
+  font-size: 1.5em;
+
+  color: #333;
+  text-decoration: none ;
+
+  cursor: pointer;
+
+  transition: color 0.25s;
+}
+
+.button.icon.delete {
+  padding-left: 10px;
+  background: none;
+  border: none;
+}
+
+.button.icon.delete:hover {
+  color: #FF0000;
+}
+
+.button.icon.edit:hover {
+  color: #FFA900;
+}
 
 .container {
   width: 90%;
@@ -113,4 +115,46 @@ header .linkBack {
 .banner-title {
   color: black;
   font-size: 36;
+}
+
+.summary {
+  height: 15%;
+  margin: 20px;
+  background-color: #598bdb;
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.summary-item * {
+  font-size: 1.25em;
+  margin: 10px;
+}
+
+.content {
+  margin: 10px;
+}
+
+.merch_id {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.dashboard-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: left;
+  margin-left: 15px;
+  margin-bottom: 15px;
+}
+
+.dashboard-info .category {
+  margin-top: 15px;
+  margin-bottom: 5px;
+  font-weight: bold;
+  text-decoration: underline;
 }

@@ -1,0 +1,49 @@
+<%=
+  erb :'partials/header',
+      locals: {
+        title: "Invoice: #{invoice.id} - #{invoice.status.capitalize}",
+        dashboard: nil,
+        buttons: nil
+      }
+%>
+
+<div class="container col-6">
+  <form action="/invoices/<%= invoice.id %>" method="POST" class="input-form">
+    <input type='hidden' name='_method' value='PUT' />
+    <h2 class="field-title">Merchant</h2>
+    <select name="invoice[merchant_id]" class="field" disabled>
+      <option value="<%= invoice.merchant.id %>" selected><%= invoice.merchant.name %></option>
+    </select>
+    <h2 class="field-title">Status</h2>
+    <select name="invoice[status]" value="<%= invoice.status %>" class="field">
+      <option value="pending">Pending</option>
+      <option value="returned">Returned</option>
+      <option value="shipped">Shipped</option>
+    </select>
+    <div class="buttons">
+      <a href="/invoices" class="button cancel">Cancel</a>
+      <button type="submit" class="button create">Update Invoice</button>
+    </div>
+  </form>
+
+  <table class="items">
+    <thead class="table-collection">
+      <tr class="table-header">
+        <th>Item ID</th>
+        <th>Item Title</th>
+        <th>Quantity</th>
+        <th>Unit Price</th>
+      </tr>
+    </thead>
+    <tbody class="table-collection">
+      <% invoice.invoice_items.find_each do |invoice_item| %>
+        <tr class="table-item">
+          <td><a href="/items/<%= invoice_item.item_id %>"><%= invoice_item.item_id %></a></td>
+          <td><%= invoice_item.item.title %></td>
+          <td><%= invoice_item.quantity %></td>
+          <td><%= invoice_item.formatted_price %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

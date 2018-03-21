@@ -3,23 +3,27 @@
       locals: {
         title: 'Merchants',
         dashboard: '/merchants-dashboard',
-        create: {
-          object: 'Merchant',
-          path: '/merchants/new'
+        buttons: {
+          create: {
+            text: 'Merchant',
+            href: '/merchants/new'
+          }
         }
       }
 %>
 <div class="container">
-  <ul class="merchants">
+  <ul class="collection">
     <% merchants.find_each do |merchant| %>
-      <li class="merchant">
+      <li class="collection-item">
         <a href="/merchants/<%= merchant.id %>"><%= merchant.name %></a>
 
-        <form action="/merchants/<%= merchant.id %>" method="POST">
-          <input type="hidden" name="_method" value="DELETE">
-          <a href="/merchants/<%= merchant.id %>/edit" class='edit button'>Edit</a>
-          <input type="submit" value="Delete" class="delete button"/>
-        </form>
+        <div class="secondary-content">
+          <form action="/merchants/<%= merchant.id %>" method="POST">
+            <input type="hidden" name="_method" value="DELETE">
+            <a href="/merchants/<%= merchant.id %>/edit" class="icon button edit"><i class="far fa-edit"></i></a>
+            <button type="submit" class="icon button delete"><i class="far fa-trash"></i></button>
+          </form>
+        </div>
       </li>
     <% end %>
   </ul>

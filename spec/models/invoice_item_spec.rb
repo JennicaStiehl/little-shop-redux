@@ -93,5 +93,22 @@ RSpec.describe InvoiceItem do
 
       expect(InvoiceItem.all.length).to be(0)
     end
+
+    it 'should be able to format a price' do
+      item = InvoiceItem.create(invoice_id: 12,
+                                item_id: 4,
+                                quantity: 1,
+                                unit_price: 1234
+                               )
+      expect(item.formatted_price).to eq('$12.34')
+
+
+      item = InvoiceItem.create(invoice_id: 12,
+                                item_id: 4,
+                                quantity: 1,
+                                unit_price: 123456
+                               )
+      expect(item.formatted_price).to eq('$1,234.56')
+    end
   end
 end

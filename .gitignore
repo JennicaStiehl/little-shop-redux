@@ -40,6 +40,7 @@ pickle-email-*.html
 *.sql
 *.sqlite
 /log
+/coverage
 /tmp
 /db/*.sqlite3
 /db/*.sqlite3-journal

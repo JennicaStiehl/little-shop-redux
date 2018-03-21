@@ -1,0 +1,84 @@
+<%=
+  erb :'partials/header',
+      locals: {
+        title: 'Invoices Dashboard',
+        dashboard: nil,
+        buttons: nil
+      }
+%>
+
+<div class="container">
+  <ul class="cards">
+    <li class="card">
+      <h3>Status Percentages</h3>
+      <ul class="inline">
+        <li>
+          <p class="left">Pending</p>
+          <p class="right"><%= percentages[:pending] %>%</p>
+        </li>
+        <li>
+          <p class="left">Shipped</p>
+          <p class="right"><%= percentages[:shipped] %>%</p>
+        </li>
+        <li>
+          <p class="left">Returned</p>
+          <p class="right"><%= percentages[:returned] %>%</p>
+        </li>
+      </ul>
+    </li>
+    <li class="card">
+      <h3>Unit Prices</h3>
+      <ul>
+        <li id="highest">
+          <h4>Highest</h4>
+          <ul class="inline">
+            <li>
+              <p class="left">Invoice:</p>
+              <p class="right">
+                <a href="/invoices/<%= prices[:highest].id %>"><%= prices[:highest].id %></a>
+              </p>
+            </li>
+          </ul>
+        </li>
+        <li id="lowest">
+          <h4>Lowest</h4>
+          <ul class="inline">
+            <li>
+              <p class="left">Invoice:</p>
+              <p class="right">
+                <a href="/invoices/<%= prices[:lowest].id %>"><%= prices[:lowest].id %></a>
+              </p>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li class="card">
+      <h3>Quantity</h3>
+      <ul>
+        <li id="highest">
+          <h4>Highest</h4>
+          <ul class="inline">
+            <li>
+              <p class="left">Invoice:</p>
+              <p class="right">
+                <a href="/invoices/<%= quantity[:highest].id %>"><%= quantity[:highest].id %></a>
+              </p>
+            </li>
+          </ul>
+        </li>
+        <li id="lowest">
+          <h4>Lowest</h4>
+          <ul class="inline">
+            <li>
+              <p class="left">Invoice:</p>
+              <p class="right">
+                <a href="/invoices/<%= quantity[:lowest].id %>"><%= quantity[:lowest].id %></a>
+              </p>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>

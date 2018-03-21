@@ -6,6 +6,8 @@ Bundler.require(:default, :test)
 require File.expand_path('../../config/environment', __FILE__)
 require 'rspec'
 require 'capybara/dsl'
+require 'simplecov'
+SimpleCov.start
 
 module RSpecMixin
   include Rack::Test::Methods
@@ -13,6 +15,7 @@ module RSpecMixin
 end
 
 Capybara.app = LittleShopApp
+Capybara.save_path = 'tmp/capybara'
 DatabaseCleaner.strategy = :truncation
 
 RSpec.configure do |c|

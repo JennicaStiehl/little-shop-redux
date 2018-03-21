@@ -1,0 +1,25 @@
+<%=
+  erb :'partials/header',
+      locals: {
+        title: 'Invoices',
+        dashboard: '/invoices-dashboard',
+        buttons: nil
+      }
+%>
+<div class="container">
+  <ul class="collection">
+    <% invoices.find_each do |invoice| %>
+      <li class="collection-item">
+        <a href="/invoices/<%= invoice.id %>" class="primary-content"><%= invoice.id %></a>
+
+        <div class="secondary-content">
+          <form action="/invoices/<%= invoice.id %>" method="POST">
+            <input type="hidden" name="_method" value="DELETE">
+            <a href="/invoices/<%= invoice.id %>/edit" class="icon button edit"><i class="far fa-edit"></i></a>
+            <button type="submit" class="icon button delete"><i class="far fa-trash"></i></button>
+          </form>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>
