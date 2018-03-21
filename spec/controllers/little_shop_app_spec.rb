@@ -8,7 +8,8 @@ RSpec.describe LittleShopApp do
                   price: 1,
                   image: 'link',
                   merchant_id: 1)
-      Invoice.create(merchant_id: 1, status: 'shipped')       
+      Invoice.create(merchant_id: 1, status: 'shipped')
+      InvoiceItem.create(item_id: 1,invoice_id: 1,quantity: 1,unit_price: 1000)
     end
 
     after(:each) do

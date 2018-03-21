@@ -4,6 +4,12 @@ RSpec.describe 'Invoices index' do
     Merchant.create(name: 'Test Merchant')
     Invoice.create(merchant_id: 1, status: 'pending')
     Invoice.create(merchant_id: 1, status: 'pending')
+    Item.create(title: 'Test Item',
+                description: 'description',
+                price: 1,
+                image: 'link',
+                merchant_id: 1)
+    InvoiceItem.create(item_id: 1,invoice_id: 2,quantity: 1,unit_price: 1000)
   end
 
   after(:each) do
@@ -45,18 +51,6 @@ RSpec.describe 'Invoices index' do
         expect(current_path).to eq '/invoices-dashboard'
       end
     end
-
-    # describe 'create new link' do
-    #   it 'should link to /invoices/new' do
-    #     visit '/invoices'
-    #
-    #     within 'header' do
-    #       click_on 'Create A New Invoice'
-    #     end
-    #
-    #     expect(current_path).to eq '/invoices/new'
-    #   end
-    # end
 
     describe 'individual invoice link' do
       it 'should link to /invoices/:id' do

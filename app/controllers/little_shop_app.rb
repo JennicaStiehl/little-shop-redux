@@ -118,6 +118,11 @@ class LittleShopApp < Sinatra::Base
   end
 
   get '/invoices-dashboard' do
-    erb :'invoices/dashboard'
+    erb :'invoices/dashboard',
+        locals: {
+          percentages: Invoice.status_percentages,
+          prices: Invoice.price_high_low,
+          quantity: Invoice.quantity_high_low
+        }
   end
 end
