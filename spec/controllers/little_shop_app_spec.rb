@@ -16,6 +16,16 @@ RSpec.describe LittleShopApp do
       DatabaseCleaner.clean
     end
 
+    describe 'error path' do
+      it 'should display the error page on 404' do
+        visit '/non_existent_page'
+
+        expect(page.status_code).to eq 404
+        expect(page).to have_content 'An error was encountered'
+        expect(page).to have_content '404 - The page you requested was not found'
+      end
+    end
+
     describe 'merchant paths' do
       it 'should have a success code for GET /merchants' do
         visit '/merchants'

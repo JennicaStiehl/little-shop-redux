@@ -71,6 +71,10 @@ nav .title {
   font-size: 1em;
 }
 
+.button svg {
+  margin: 0 !important; /* Needs to be !important to override font-awesome styling */
+}
+
 .button.edit {
   padding-left: 1.125em;
   padding-right: 1.125em;

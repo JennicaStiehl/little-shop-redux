@@ -15,3 +15,8 @@ ul.cards .card {
 
   position: relative;
 }
+
+#chart_div {
+  width: 360;
+  height: 300;
+}
