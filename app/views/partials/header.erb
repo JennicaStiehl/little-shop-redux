@@ -19,14 +19,14 @@
         <ul class="buttons-row">
           <% unless buttons[:edit].nil? %>
             <li>
-              <a href="<%= buttons[:edit][:href] %>" class="button edit"><%= buttons[:edit][:text] %></a>
+              <a href="<%= buttons[:edit][:href] %>" class="button edit"><i class="far fa-edit"></i> <%= buttons[:edit][:text] %></a>
             </li>
           <% end %>
           <% unless buttons[:delete].nil? %>
             <li>
               <form action="<%= buttons[:delete][:href] %>" method="POST">
                 <input type="hidden" name="_method" value="DELETE" />
-                <button type="submit" class="button delete"><%= buttons[:delete][:text] %></button>
+                <button type="submit" class="button delete"><i class="far fa-trash"></i> <%= buttons[:delete][:text] %></button>
               </form>
             </li>
           <% end %>
