@@ -34,5 +34,13 @@ RSpec.describe 'Merchants /new' do
       expect(current_path).to eq '/merchants'
       expect(page).to have_selector('ul .collection-item', count: 2)
     end
+
+    it 'should be able to cancel' do
+      visit '/merchants/new'
+
+      click_on 'Cancel'
+
+      expect(current_path).to eq '/merchants'
+    end
   end
 end
