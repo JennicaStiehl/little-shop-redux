@@ -13,11 +13,7 @@
         var data = new google.visualization.DataTable();
         data.addColumn('string', 'Status');
         data.addColumn('number', 'Percent');
-        data.addRows([
-          ['Pending', 30],
-          ['Shipped', 57],
-          ['Returned', 13],
-        ]);
+        data.addRows(chartData);
 
         // Set chart options
         var options = {'title':'Invoice Status Percentages',
