@@ -21,14 +21,16 @@
   <ul class="cards">
     <% merchants.find_each do |merchant| %>
       <li class="card">
-        <a href="/merchants/<%= merchant.id %>"><%= merchant.name%></a>
-        <div class="info">
-          <p class="category">Item Count:</p>
-          <p><%= merchant.item_count %></p>
-          <p class="category">Avg Item Price:</p>
-          <p>$<%= merchant.avg_item_price %></p>
-          <p class="category">Total Cost of Items:</p>
-          <p>$<%= merchant.total_cost %></p>
+        <div class="content">
+          <a href="/merchants/<%= merchant.id %>"><%= merchant.name%></a>
+          <div class="dashboard-info">
+            <p class="category">Item Count:</p>
+            <p><%= merchant.item_count %></p>
+            <p class="category">Avg Item Price:</p>
+            <p>$<%= merchant.avg_item_price %></p>
+            <p class="category">Total Cost of Items:</p>
+            <p>$<%= merchant.total_cost %></p>
+          </div>
         </div>
       </li>
     <% end %>
