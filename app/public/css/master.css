@@ -162,3 +162,11 @@ nav .title {
   font-weight: bold;
   text-decoration: underline;
 }
+
+.container .text {
+  padding: 1em;
+}
+
+.container .text h2 {
+  font-size: 2em;
+}

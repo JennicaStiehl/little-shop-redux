@@ -25,6 +25,10 @@ class LittleShopApp < Sinatra::Base
         }
   end
 
+  get '/' do
+    erb :index
+  end
+
   get '/items' do
     erb :'items/index', locals: { items: Item.all }
   end

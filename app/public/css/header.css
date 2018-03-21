@@ -33,6 +33,14 @@ header .title-container .box .title {
   font-size: 2em;
 }
 
+header .title-container .box .brand-logo {
+  position: relative;
+  margin: 0.5em;
+  text-align: center;
+
+  height: 75%;
+}
+
 header .title-container .box .button {
   color: #666;
   background: #f3f3f3;
