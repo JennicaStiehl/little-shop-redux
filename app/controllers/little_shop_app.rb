@@ -1,6 +1,29 @@
 # Defines LittleShop
 class LittleShopApp < Sinatra::Base
   set :public_folder, 'public'
+  set :show_exceptions, :custom_handler
+
+  not_found do
+    e = env['sinatra.error']
+    erb :error,
+        locals: {
+          status: status,
+          url: request.url,
+          message: 'The page you requested was not found.',
+          backtrace: "Application error\n#{e}\n#{e.backtrace.join("\n")}"
+        }
+  end
+
+  error do
+    e = env['sinatra.error']
+    erb :error,
+        locals: {
+          status: status,
+          url: request.url,
+          message: nil,
+          backtrace: "Application error\n#{e}\n#{e.backtrace.join("\n")}"
+        }
+  end
 
   get '/items' do
     erb :'items/index', locals: { items: Item.all }
