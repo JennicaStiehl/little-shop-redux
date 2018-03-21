@@ -34,5 +34,13 @@ RSpec.describe 'Merchants /edit' do
       expect(current_path).to eq '/merchants/1'
       expect(page).to have_content 'Test Update'
     end
+
+    it 'should be able to cancel the edit' do
+      visit '/merchants/1/edit'
+
+      click_on 'Cancel'
+
+      expect(current_path).to eq '/merchants'
+    end
   end
 end

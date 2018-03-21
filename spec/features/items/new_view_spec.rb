@@ -48,5 +48,13 @@ RSpec.describe 'Items /new' do
       expect(current_path).to eq '/items'
       expect(page).to have_selector('ul .card', count: 3)
     end
+
+    it 'should be able to cancel the edit' do
+      visit '/items/new'
+
+      click_on 'Cancel'
+
+      expect(current_path).to eq '/items'
+    end
   end
 end

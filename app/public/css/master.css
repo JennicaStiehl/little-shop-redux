@@ -67,6 +67,19 @@ nav .title {
   cursor: pointer;
 }
 
+.button.delete {
+  font-size: 1em;
+}
+
+.button svg {
+  margin: 0 !important; /* Needs to be !important to override font-awesome styling */
+}
+
+.button.edit {
+  padding-left: 1.125em;
+  padding-right: 1.125em;
+}
+
 .button.icon {
   font-size: 1.5em;
 
@@ -106,4 +119,46 @@ nav .title {
 .banner-title {
   color: black;
   font-size: 36;
+}
+
+.summary {
+  height: 15%;
+  margin: 20px;
+  background-color: #598bdb;
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.summary-item * {
+  font-size: 1.25em;
+  margin: 10px;
+}
+
+.content {
+  margin: 10px;
+}
+
+.merch_id {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.dashboard-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: left;
+  margin-left: 15px;
+  margin-bottom: 15px;
+}
+
+.dashboard-info .category {
+  margin-top: 15px;
+  margin-bottom: 5px;
+  font-weight: bold;
+  text-decoration: underline;
 }
