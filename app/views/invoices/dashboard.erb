@@ -8,19 +8,19 @@
 %>
 
 <div class="container">
-  <ul class="cards">
+  <ul class="cards stats">
     <li class="card">
       <h3>Status Percentages</h3>
-      <ul class="inline">
-        <li>
+      <ul>
+        <li class="inline">
           <p class="left">Pending</p>
           <p class="right"><%= percentages[:pending] %>%</p>
         </li>
-        <li>
+        <li class="inline">
           <p class="left">Shipped</p>
           <p class="right"><%= percentages[:shipped] %>%</p>
         </li>
-        <li>
+        <li class="inline">
           <p class="left">Returned</p>
           <p class="right"><%= percentages[:returned] %>%</p>
         </li>
